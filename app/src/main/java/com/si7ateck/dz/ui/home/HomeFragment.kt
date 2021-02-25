@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,8 +29,22 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(
+            inflater,
+            R.layout.fragment_home,
+            container,
+            false
+        )
+
+
+
+
+
         homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
+
+
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home_bottom)
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -56,8 +72,7 @@ class HomeFragment : Fragment() {
                 })
         slider.getIndicator()
 
-        Log.d("res","id is ${res}")
-        return root
+        return binding.root
 
     }
 }
