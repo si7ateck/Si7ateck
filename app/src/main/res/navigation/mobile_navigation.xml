@@ -22,4 +22,8 @@
         android:name="com.si7ateck.dz.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.si7ateck.dz.setting.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
