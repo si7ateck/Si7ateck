@@ -29,4 +29,12 @@ class Converter {
     fun toCity(city: String): City {
         return City.valueOf(city)
     }
+    @TypeConverter
+    fun fromUserType(userType: UserType):String{
+        return userType.name
+    }
+    @TypeConverter
+    fun toUserType(userType: String):UserType {
+        return UserType.valueOf(userType)
+    }
 }
