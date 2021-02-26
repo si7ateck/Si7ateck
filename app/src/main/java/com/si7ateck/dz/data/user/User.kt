@@ -1,10 +1,11 @@
 package com.si7ateck.dz.data.user
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.si7ateck.dz.data.types.UserType
 
-
+@Entity(tableName = "user_table")
 data class User(
         @PrimaryKey(autoGenerate = true)
         var _Id: Long,

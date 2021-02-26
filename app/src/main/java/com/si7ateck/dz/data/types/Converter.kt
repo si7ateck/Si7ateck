@@ -37,4 +37,12 @@ class Converter {
     fun toUserType(userType: String):UserType {
         return UserType.valueOf(userType)
     }
+    @TypeConverter
+    fun fromBloodType(bloodType: BloodType):String{
+        return bloodType.name
+    }
+    @TypeConverter
+    fun toBloodType(bloodType : String):BloodType {
+        return BloodType.valueOf(bloodType)
+    }
 }
