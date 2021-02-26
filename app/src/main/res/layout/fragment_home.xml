@@ -1,77 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_main_image"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_home_color"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="homeViewModel"
+            type="com.si7ateck.dz.ui.home.HomeViewModel" />
 
-    <com.custom.sliderimage.logic.SliderImage
-        android:id="@+id/slider"
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_main_image"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.33"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@color/background_home_color"
+        tools:context=".ui.home.HomeFragment">
 
 
-    <ImageButton
-        android:id="@+id/button_doctor"
-        style="@style/ButtonOptionsStyle"
-        android:src="@drawable/ic_button_doctors"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slider"
-        app:layout_constraintVertical_bias="0.2" />
+        <com.custom.sliderimage.logic.SliderImage
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.33"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageButton
-        android:id="@+id/button_pharmacy"
-        style="@style/ButtonOptionsStyle"
-        android:src="@drawable/ic_button_pharmacies3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_doctor"
-        app:layout_constraintTop_toBottomOf="@+id/slider"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <ImageButton
-        android:id="@+id/button_donator"
-        style="@style/ButtonOptionsStyle"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ic_button_donations2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_doctor" />
-
-    <TextView
-        android:id="@+id/text_home_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:fontFamily="sans-serif-black"
-        android:padding="8dp"
-        android:gravity="center"
-        tools:text="Hello with us please check your name"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_donator"
-        app:layout_constraintVertical_bias="0.8" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="1.0" />
+        <ImageButton
+            android:id="@+id/button_doctor"
+            style="@style/ButtonOptionsStyle"
+            android:src="@drawable/ic_button_doctors"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slider"
+            app:layout_constraintVertical_bias="0.2" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/button_pharmacy"
+            style="@style/ButtonOptionsStyle"
+            android:src="@drawable/ic_button_pharmacies3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_doctor"
+            app:layout_constraintTop_toBottomOf="@+id/slider"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <ImageButton
+            android:id="@+id/button_donator"
+            style="@style/ButtonOptionsStyle"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_button_donations2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_doctor" />
+
+        <TextView
+            android:id="@+id/text_home_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="sans-serif-black"
+            android:padding="8dp"
+            android:text="@{homeViewModel.text}"
+            android:gravity="center"
+            tools:text="Hello with us please check your name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_donator"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
