@@ -25,6 +25,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var homeViewModelFactory: HomeViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,12 +33,10 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        homeViewModelFactory=HomeViewModelFactory()
 
         homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-
-
+            ViewModelProvider(this,homeViewModelFactory).get(HomeViewModel::class.java)
 
 
         _binding!!.apply {
