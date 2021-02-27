@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="homeViewModel"
+            type="com.si7ateck.dz.ui.home.HomeViewModel" />
 
-        <data>
-                <variable
-                    name="homeViewModel"
-                    type="com.si7ateck.dz.ui.home.HomeViewModel" />
-        </data>
+    </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_main_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,8 +27,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageButton
@@ -68,8 +67,8 @@
             android:layout_margin="16dp"
             android:fontFamily="sans-serif-black"
             android:padding="8dp"
-            android:gravity="center"
             android:text="@{homeViewModel.text}"
+            android:gravity="center"
             tools:text="Hello with us please check your name"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintBottom_toBottomOf="parent"
