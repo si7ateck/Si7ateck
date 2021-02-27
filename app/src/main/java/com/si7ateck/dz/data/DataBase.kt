@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.si7ateck.dz.data.doctor.Doctor
+import com.si7ateck.dz.data.doctor.doctor
 import com.si7ateck.dz.data.doctor.DoctorDatabaseDao
 import com.si7ateck.dz.data.donner.Donner
 import com.si7ateck.dz.data.donner.DonnerDatabaseDao
@@ -13,7 +13,7 @@ import com.si7ateck.dz.data.pharmacy.PharmacyDatabaseDao
 
 class DataBase {
     @Database(
-        entities = [Pharmacy::class, Doctor::class, Donner::class],
+        entities = [Pharmacy::class, doctor::class, Donner::class],
         version = 1,
         exportSchema = true
     )
