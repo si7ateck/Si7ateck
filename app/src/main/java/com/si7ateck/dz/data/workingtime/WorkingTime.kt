@@ -7,8 +7,8 @@ import java.time.DayOfWeek
 
 @Entity(tableName = "_working_time_table")
 data class WorkingTime(
-    @PrimaryKey(autoGenerate = true)
-    var _Id: Long,
+
+    @PrimaryKey
     @ColumnInfo(name = "_id_firebase")
     var _id_firebase: String,
     @ColumnInfo(name = "_sunday")

@@ -23,20 +23,23 @@ import com.si7ateck.dz.data.workingtime.WorkingTime
         childColumns =["_id_firebase"]
     )]
 )
-data class doctor(
+data class Doctor(
     @PrimaryKey(autoGenerate = true)
     var _Id: Long,
     @ColumnInfo(name = "_id_firebase")
     var _id_firebase: String,
 
     @ColumnInfo(name = "_name")
-    val _name: String,
+    var _name: String,
 
     @ColumnInfo(name = "_speciality")
     var _speciality: Specialty,
 
     @ColumnInfo(name = "_phone")
     var _phone: String,
+
+    @ColumnInfo(name = "_image")
+    var _image: String,
 
     @ColumnInfo(name = "_type")
     var _type: Type
