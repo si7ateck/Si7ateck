@@ -8,6 +8,8 @@ import java.util.ArrayList
 
 class HomeViewModel : ViewModel() {
 
+
+
     private val _text = MutableLiveData<String>().apply {
         value = "Hello with us please check your name"
     }

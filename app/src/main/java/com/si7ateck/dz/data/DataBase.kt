@@ -11,8 +11,7 @@ import com.si7ateck.dz.data.donner.DonnerDatabaseDao
 import com.si7ateck.dz.data.pharmacy.Pharmacy
 import com.si7ateck.dz.data.pharmacy.PharmacyDatabaseDao
 
-class DataBase {
-    @Database(
+@Database(
         entities = [Pharmacy::class, Doctor::class, Donner::class],
         version = 1,
         exportSchema = true
@@ -42,5 +41,4 @@ class DataBase {
                 }
             }
         }
-    }
 }

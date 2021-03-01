@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--res/drawable/image.xml-->
+<!--define layer-list-->
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--set image to be shown on cicular image view-->
+    <item android:drawable="@drawable/ic_button_doctors"
+        android:gravity="center"
+        android:height="60dp"
+        android:width="60dp"
+
+        />
+    <item android:drawable="@drawable/circle_shape"/>
+</layer-list>

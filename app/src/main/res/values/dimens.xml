@@ -9,4 +9,5 @@
     <dimen name="button_highlited_strok_width">1dp</dimen>
     <dimen name="button_not_highlited_strok_width">2dp</dimen>
     <dimen name="button_radius_rounded">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
