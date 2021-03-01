@@ -1,8 +1,8 @@
 package com.si7ateck.dz.repository
 
 import androidx.lifecycle.LiveData
-
 import com.si7ateck.dz.data.doctor.Doctor
+
 import com.si7ateck.dz.data.doctor.DoctorDatabaseDao
 
 class DoctorRepository(private val doctorDatabaseDao: DoctorDatabaseDao) {
@@ -17,6 +17,9 @@ class DoctorRepository(private val doctorDatabaseDao: DoctorDatabaseDao) {
 
     suspend fun clear(){
         doctorDatabaseDao.clear()
+    }
+    fun searchDatabase(searchQuery: String): LiveData<List<Doctor>> {
+        return doctorDatabaseDao.searchDatabase(searchQuery)
     }
 
     val getAllDoctors: LiveData<List<Doctor>> = doctorDatabaseDao.getAllDoctors()

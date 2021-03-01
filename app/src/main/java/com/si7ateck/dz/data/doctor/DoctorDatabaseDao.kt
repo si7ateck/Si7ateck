@@ -16,4 +16,7 @@ interface DoctorDatabaseDao {
 
     @Query("SELECT * FROM doctor_table ORDER BY _Id DESC" )
     fun getAllDoctors(): LiveData<List<Doctor>>
+
+    @Query("SELECT * FROM doctor_table WHERE _name LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): LiveData<List<Doctor>>
 }

@@ -9,7 +9,6 @@ import com.si7ateck.dz.data.types.Specialty
 import com.si7ateck.dz.data.types.Type
 import com.si7ateck.dz.data.workingtime.WorkingTime
 
-
 @Entity(
     tableName = "doctor_table",
     foreignKeys = [ForeignKey(
@@ -17,7 +16,7 @@ import com.si7ateck.dz.data.workingtime.WorkingTime
         parentColumns = [ "_id_firebase"],
         onDelete = ForeignKey.NO_ACTION,
         childColumns =["_id_firebase"]
-    ),ForeignKey(
+    ), ForeignKey(
         entity = Location::class,
         parentColumns = [ "_id_firebase"],
         onDelete = ForeignKey.NO_ACTION,
@@ -31,7 +30,7 @@ data class Doctor(
     var _id_firebase: String,
 
     @ColumnInfo(name = "_name")
-    val _name: String,
+    var _name: String,
 
     @ColumnInfo(name = "_speciality")
     var _speciality: Specialty,
@@ -39,7 +38,9 @@ data class Doctor(
     @ColumnInfo(name = "_phone")
     var _phone: String,
 
+    @ColumnInfo(name = "_image")
+    var _image: String,
+
     @ColumnInfo(name = "_type")
     var _type: Type
 )
-

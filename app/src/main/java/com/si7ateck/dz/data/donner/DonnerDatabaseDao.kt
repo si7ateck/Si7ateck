@@ -1,12 +1,9 @@
 package com.si7ateck.dz.data.donner
 
 import androidx.lifecycle.LiveData
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
-import com.si7ateck.dz.data.doctor.Doctor
+import androidx.room.*
 
+@Dao
 interface DonnerDatabaseDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(donner: Donner)

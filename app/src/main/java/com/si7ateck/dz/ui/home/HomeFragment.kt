@@ -5,10 +5,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.custom.sliderimage.logic.SliderImage
+import com.si7ateck.dz.R
 import com.si7ateck.dz.databinding.FragmentHomeBinding
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -29,13 +38,14 @@ class HomeFragment : Fragment() {
 
         homeViewModel =
             ViewModelProvider(this,homeViewModelFactory).get(HomeViewModel::class.java)
+        _binding!!.buttonDoctor
 
-        _binding!!.lifecycleOwner = this
+        _binding!!.lifecycleOwner = this@HomeFragment
         _binding!!.homeViewModel = homeViewModel
-
-
         _binding!!.apply {
-
+            buttonDoctor.setOnClickListener { view ->
+                findNavController().navigate(R.id.action_nav_home_to_doctor_item)
+            }
             slider.getItems()
             slider.onPageListener(
                 onPageScroll = { i: Int, fl: Float, i1: Int ->
@@ -52,7 +62,7 @@ class HomeFragment : Fragment() {
         }
         homeViewModel.items.observe(viewLifecycleOwner, Observer { items ->
             items?.let {
-              _binding!!.slider.setItems(items)
+                _binding!!.slider.setItems(items)
             }
         })
 

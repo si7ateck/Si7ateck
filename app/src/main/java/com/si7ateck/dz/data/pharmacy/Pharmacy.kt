@@ -30,6 +30,9 @@ data class Pharmacy(
     @ColumnInfo(name = "_name")
     val _name: String,
 
+    @ColumnInfo(name = "_image")
+    var _image: String,
+
     @ColumnInfo(name = "_phone")
     var _phone: String
 

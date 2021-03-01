@@ -11,8 +11,8 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_itempharmacyFragment"
-            app:destination="@id/itempharmacyFragment" />
+            android:id="@+id/action_nav_home_to_doctor_item"
+            app:destination="@id/doctor_item" />
     </fragment>
 
     <fragment
@@ -31,8 +31,8 @@
         android:name="com.si7ateck.dz.setting.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
-        android:id="@+id/itempharmacyFragment"
-        android:name="com.si7ateck.dz.ui.pharmacy.ItempharmacyFragment"
-        android:label="fragment_pharmacy_list"
-        tools:layout="@layout/fragment_pharmacy_list" />
+        android:id="@+id/doctor_item"
+        android:name="com.si7ateck.dz.ui.doctor.DoctorItemFragment"
+        android:label="DoctorItem"
+        />
 </navigation>

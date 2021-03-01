@@ -1,7 +1,6 @@
 package com.si7ateck.dz.repository
 
 import androidx.lifecycle.LiveData
-import com.si7ateck.dz.data.doctor.Doctor
 import com.si7ateck.dz.data.donner.Donner
 import com.si7ateck.dz.data.donner.DonnerDatabaseDao
 
