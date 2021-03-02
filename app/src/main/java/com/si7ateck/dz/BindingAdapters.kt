@@ -2,10 +2,7 @@ package com.si7ateck.dz
 
 import android.util.Log
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.observe
+import androidx.lifecycle.*
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
@@ -31,6 +28,7 @@ class BindingAdapters {
         @NotNull
         @BindingAdapter( "getadrees2")
         fun getAddress2(view: MaterialTextView, address: String) {
+
             view.text=address
             Log.d("akram",address)
         }
