@@ -40,7 +40,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
     val getAllAddress: LiveData<List<String>> = repositoryd.getAllAddress
 
     var fulladdress =MutableLiveData<String>().apply {  value = "empty"}
-      fun getAddress(id:String):String {
+      fun getAddress(id:String):LiveData<String> {
         return repositoryd.getAddress(id)
     }
 
@@ -49,9 +49,9 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         value = ArrayList<Doctor>()
         value!!.add(
             Doctor(
-                1,
-                "abc",
-                "ilyes",
+                6,
+                "1",
+                "Doctor1",
                 Specialty.Chirurgien_Cardiaque,
                 "0540073829",
                 "R.drawable.images",
@@ -60,9 +60,9 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             Doctor(
-                2,
-                "abcd",
-                "akram",
+                7,
+                "2",
+                "Doctor2",
                 Specialty.Chirurgie_pediatrique,
                 "0540073829",
                 "R.drawable.ppng",
@@ -71,9 +71,9 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             Doctor(
-                3,
-                "abcde",
-                "ilyes",
+                8,
+                "3",
+                "Doctor3",
                 Specialty.Allergologue,
                 "0540073829",
                 "R.drawable.ppng",
@@ -82,9 +82,9 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             Doctor(
-                4,
-                "abcdef",
-                "ilyes",
+                9,
+                "4",
+                "Doctor4",
                 Specialty.Allergologue,
                 "0540073829",
                 "R.drawable.images",
@@ -93,9 +93,9 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             Doctor(
-                5,
-                "abcdefg",
-                "ilyes",
+                10,
+                "5",
+                "Doctor5",
                 Specialty.Allergologue,
                 "0540073829",
                 "R.drawable.images",
@@ -110,21 +110,21 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         value = ArrayList<Location>()
         value!!.add(
             Location(
-                "abc",
+                "1",
                 2.22,
                 0.5,
-                City.SIDI_BEL_ABBES,
-                "dar el berd",
-                "2 rue belquace",
+                City.TIPAZA,
+                "tipaza",
+                "1 rue",
                 233
             )
         )
         value!!.add(
             Location(
-                "abcd",
+                "2",
                 2.223,
                 0.05,
-                City.SIDI_BEL_ABBES,
+                City.MEDEA,
                 "dar el berd",
                 "2 rue belquace",
                 2334
@@ -132,10 +132,10 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             Location(
-                "abcde",
+                "3",
                 2.225,
                 0.45,
-                City.SIDI_BEL_ABBES,
+                City.TIZI_OUZOU,
                 "dar el berd",
                 "2 rue belquace",
                 2335
@@ -143,10 +143,10 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             Location(
-                "abcdef",
+                "4",
                 2.227,
                 0.35,
-                City.SIDI_BEL_ABBES,
+                City.ORAN,
                 "dar el berd",
                 "2 rue belquace",
                 2337
@@ -154,10 +154,10 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             Location(
-                "abcdefg",
+                "5",
                 2.228,
                 0.75,
-                City.SIDI_BEL_ABBES,
+                City.BLIDA,
                 "dar el berd",
                 "2 rue belquace",
                 2339
@@ -170,7 +170,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         value = ArrayList<WorkingTime>()
         value!!.add(
             WorkingTime(
-                "abc",
+                "1",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
@@ -182,7 +182,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             WorkingTime(
-                "abcd",
+                "2",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
@@ -194,7 +194,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             WorkingTime(
-                "abcde",
+                "3",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
@@ -206,7 +206,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             WorkingTime(
-                "abcdef",
+                "4",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
@@ -218,7 +218,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
         value!!.add(
             WorkingTime(
-                "abcdefg",
+                "5",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
                 "08:00 - 17:00",

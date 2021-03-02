@@ -13,17 +13,15 @@ import kotlinx.coroutines.withContext
 
 class Adapter: RecyclerView.Adapter<Adapter.MyViewHolder>() {
     var dataList = emptyList<Doctor>()
-    var addresslist = emptyList<String>()
     lateinit var viewModel:DoctorItemViewModel
     class MyViewHolder(private val binding: FragmentDoctorItemBinding) : RecyclerView.ViewHolder(binding.root){
 
-         fun bind(doctor: Doctor,address:String, viewModel: DoctorItemViewModel){
+         fun bind(doctor: Doctor, viewModel: DoctorItemViewModel){
 
             binding.doctor = doctor
             binding.viewmodeld = viewModel
             
-            
-            binding.doctorAddess.text = address
+
             binding.executePendingBindings()
 
          }
@@ -51,15 +49,13 @@ class Adapter: RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = dataList[position]
-        val currentaddress = addresslist[position]
-        holder.bind(currentItem,currentaddress,viewModel)
+        holder.bind(currentItem,viewModel)
     }
 
-    fun setData(doctorlist: List<Doctor>,addresslist:List<String>,viewModel: DoctorItemViewModel){
+    fun setData(doctorlist: List<Doctor>,viewModel: DoctorItemViewModel){
         val doctorDiffUtil = DiffUtill(dataList, doctorlist)
         val doctorDiffResult = DiffUtil.calculateDiff(doctorDiffUtil)
         this.dataList = doctorlist
-        this.addresslist = addresslist
         this.viewModel=viewModel
         doctorDiffResult.dispatchUpdatesTo(this)
     }
