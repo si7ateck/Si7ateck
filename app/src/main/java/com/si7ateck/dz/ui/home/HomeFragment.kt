@@ -46,6 +46,9 @@ class HomeFragment : Fragment() {
             buttonDoctor.setOnClickListener { view ->
                 findNavController().navigate(R.id.action_nav_home_to_doctor_item)
             }
+            buttonPharmacy.setOnClickListener { view->
+                findNavController().navigate(R.id.action_nav_home_to_pharmacyFragment)
+            }
             slider.getItems()
             slider.onPageListener(
                 onPageScroll = { i: Int, fl: Float, i1: Int ->

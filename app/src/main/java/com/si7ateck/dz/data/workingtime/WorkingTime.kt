@@ -3,7 +3,6 @@ package com.si7ateck.dz.data.workingtime
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.DayOfWeek
 
 @Entity(tableName = "_working_time_table")
 data class WorkingTime(
