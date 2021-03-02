@@ -23,7 +23,7 @@ class Adapter: RecyclerView.Adapter<Adapter.MyViewHolder>() {
             binding.viewmodeld = viewModel
             
             
-            binding.doctorAddess.text = address
+            //binding.doctorAddess.text = address
             binding.executePendingBindings()
 
          }

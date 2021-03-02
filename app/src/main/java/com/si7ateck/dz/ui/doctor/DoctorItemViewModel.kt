@@ -44,7 +44,6 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         return repositoryd.getAddress(id)
     }
 
-
     private val _DiplayDocotors = MutableLiveData<ArrayList<Doctor>>().apply {
         value = ArrayList<Doctor>()
         value!!.add(

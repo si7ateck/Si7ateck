@@ -60,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/doctor_addess"
+                    getadrees2="@{viewmodeld.getAddress(doctor._id_firebase)}"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                     android:textColor="#ffffffff"
                     android:padding="5dp" />
