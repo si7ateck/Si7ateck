@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_home_to_doctor_item"
             app:destination="@id/doctor_item" />
+        <action
+            android:id="@+id/action_nav_home_to_pharmacyFragment"
+            app:destination="@id/pharmacyFragment" />
     </fragment>
 
     <fragment
@@ -34,5 +37,17 @@
         android:id="@+id/doctor_item"
         android:name="com.si7ateck.dz.ui.doctor.DoctorItemFragment"
         android:label="DoctorItem"
-        />
+        >
+        <action
+            android:id="@+id/action_doctor_item_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/pharmacyFragment"
+        android:name="com.si7ateck.dz.ui.pharmacy2.PharmacyFragment"
+        android:label="PharmacyFragment" >
+        <action
+            android:id="@+id/action_pharmacyFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

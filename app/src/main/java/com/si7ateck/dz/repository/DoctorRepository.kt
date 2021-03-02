@@ -7,20 +7,26 @@ import com.si7ateck.dz.data.doctor.DoctorDatabaseDao
 
 class DoctorRepository(private val doctorDatabaseDao: DoctorDatabaseDao) {
 
-    suspend fun insert(doctor: Doctor){
+    suspend fun insert(doctor: Doctor) {
         doctorDatabaseDao.insert(doctor)
     }
 
-    suspend fun update(doctor: Doctor){
+    suspend fun update(doctor: Doctor) {
         doctorDatabaseDao.update(doctor)
     }
 
-    suspend fun clear(){
+    suspend fun clear() {
         doctorDatabaseDao.clear()
     }
+
     fun searchDatabase(searchQuery: String): LiveData<List<Doctor>> {
         return doctorDatabaseDao.searchDatabase(searchQuery)
     }
 
     val getAllDoctors: LiveData<List<Doctor>> = doctorDatabaseDao.getAllDoctors()
+    val getAllAddress: LiveData<List<String>> = doctorDatabaseDao.getAllAddress()
+
+     fun getAddress(addressQuery: String): String {
+        return doctorDatabaseDao.getAddress(addressQuery)
+    }
 }

@@ -1,6 +1,7 @@
 package com.si7ateck.dz.ui.doctor
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,7 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
 
     private var _binding: FragmentItemListBinding? = null
     private val binding get() = _binding!!
-    private val adapter: Adapter by lazy { Adapter() }
+    private lateinit var  adapter: Adapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,12 +29,16 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
     ): View? {
         _binding = FragmentItemListBinding.inflate(inflater, container, false)
         _binding!!.lifecycleOwner = this
-
+        adapter = Adapter()
 
         setupRecyclerview()
         mDoctorItemViewModel.getAllDoctors.observe(viewLifecycleOwner, Observer {data ->
-            adapter.setData(data)
+           mDoctorItemViewModel.getAllAddress.observe(viewLifecycleOwner, Observer { address ->
+               adapter.setData(data,address,mDoctorItemViewModel)
+           })
+
         })
+
 
 
 
@@ -64,9 +69,11 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
         val searchQuery = "%$query%"
 
         mDoctorItemViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner,
-            Observer { list ->
-            list?.let {
-                adapter.setData(it)
+            Observer { list -> list?.let {
+                mDoctorItemViewModel.getAllAddress.observe(viewLifecycleOwner, Observer { address ->
+                    adapter.setData(list,address,mDoctorItemViewModel)
+                })
+
             }
         })
     }

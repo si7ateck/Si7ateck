@@ -1,110 +1,44 @@
-package com.si7ateck.dz.ui.doctor
+package com.si7ateck.dz.ui.pharmacy2
 
 import android.app.Application
-import android.util.Log
-import androidx.databinding.BindingAdapter
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
-import com.google.android.material.imageview.ShapeableImageView
+import androidx.lifecycle.*
 import com.si7ateck.dz.MyDataBase
-import com.si7ateck.dz.data.doctor.Doctor
 import com.si7ateck.dz.data.gps.Location
+import com.si7ateck.dz.data.pharmacy.Pharmacy
 import com.si7ateck.dz.data.types.City
-import com.si7ateck.dz.data.types.Specialty
-import com.si7ateck.dz.data.types.Type
 import com.si7ateck.dz.data.workingtime.WorkingTime
-import com.si7ateck.dz.repository.DoctorRepository
 import com.si7ateck.dz.repository.LocationRepository
+import com.si7ateck.dz.repository.PharmacyRepository
 import com.si7ateck.dz.repository.WorkingTimeRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
+import java.util.ArrayList
 
-class DoctorItemViewModel(application: Application) : AndroidViewModel(application) {
-    private val doctorDatabaseDao = MyDataBase.getDatabase(
-        application
-    ).doctorDatabaseDao()
+class PharmacyViewModel (application: Application) : AndroidViewModel(application) {
     private val wtDatabaseDao = MyDataBase.getDatabase(
         application
     ).wtDatabaseDao()
     private val locationDatabaseDao = MyDataBase.getDatabase(
         application
     ).locationDatabaseDao()
-    private val repositoryd: DoctorRepository = DoctorRepository(doctorDatabaseDao)
+    private val pharmacyDatabaseDao = MyDataBase.getDatabase(
+        application
+    ).pharmacyDatabaseDao()
     private val repositoryl: LocationRepository = LocationRepository(locationDatabaseDao)
     private val repositorywt: WorkingTimeRepository = WorkingTimeRepository(wtDatabaseDao)
-    val getAllDoctors: LiveData<List<Doctor>> = repositoryd.getAllDoctors
-    val getAllAddress: LiveData<List<String>> = repositoryd.getAllAddress
+    private val repositoryp: PharmacyRepository = PharmacyRepository(pharmacyDatabaseDao)
+    val getAllPharmacy : LiveData<List<Pharmacy>> = repositoryp.getAllPharmacy
 
-    var fulladdress =MutableLiveData<String>().apply {  value = "empty"}
-      fun getAddress(id:String):String {
-        return repositoryd.getAddress(id)
+    private val _pharmacyitems =MediatorLiveData<ArrayList<Pharmacy>>().apply {
+        value = ArrayList()
+        value!!.add(Pharmacy(1,"abc","belquace","R.Drawable.ppng","0540073829"))
+        value!!.add(Pharmacy(2,"abcd","belquace","R.Drawable.ppng","0540073829"))
+        value!!.add(Pharmacy(3,"abcde","belquace","R.Drawable.ppng","0540073829"))
+        value!!.add(Pharmacy(4,"abcdef","belquace","R.Drawable.ppng","0540073829"))
+        value!!.add(Pharmacy(5,"abcdefg","belquace","R.Drawable.ppng","0540073829"))
+
     }
-
-
-    private val _DiplayDocotors = MutableLiveData<ArrayList<Doctor>>().apply {
-        value = ArrayList<Doctor>()
-        value!!.add(
-            Doctor(
-                1,
-                "abc",
-                "ilyes",
-                Specialty.Chirurgien_Cardiaque,
-                "0540073829",
-                "R.drawable.images",
-                Type.PRIVATE
-            )
-        )
-        value!!.add(
-            Doctor(
-                2,
-                "abcd",
-                "akram",
-                Specialty.Chirurgie_pediatrique,
-                "0540073829",
-                "R.drawable.ppng",
-                Type.PRIVATE
-            )
-        )
-        value!!.add(
-            Doctor(
-                3,
-                "abcde",
-                "ilyes",
-                Specialty.Allergologue,
-                "0540073829",
-                "R.drawable.ppng",
-                Type.PRIVATE
-            )
-        )
-        value!!.add(
-            Doctor(
-                4,
-                "abcdef",
-                "ilyes",
-                Specialty.Allergologue,
-                "0540073829",
-                "R.drawable.images",
-                Type.PRIVATE
-            )
-        )
-        value!!.add(
-            Doctor(
-                5,
-                "abcdefg",
-                "ilyes",
-                Specialty.Allergologue,
-                "0540073829",
-                "R.drawable.images",
-                Type.PRIVATE
-            )
-        )
-    }
-
-    val DiplayDocotors: LiveData<ArrayList<Doctor>> = _DiplayDocotors
+    private val pharmacyitems : LiveData<ArrayList<Pharmacy>> = _pharmacyitems
 
     private val _locationitems = MutableLiveData<ArrayList<Location>>().apply {
         value = ArrayList<Location>()
@@ -231,16 +165,14 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
     }
     val wtitems: LiveData<ArrayList<WorkingTime>> = _wtitems
 
-
-    fun insertDatad(doctor: Doctor) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repositoryd.insert(doctor)
-        }
-    }
-
     fun insertDatal(location: Location) {
         viewModelScope.launch(Dispatchers.IO) {
             repositoryl.insert(location)
+        }
+    }
+    fun insertDatap(pharmacy: Pharmacy) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryp.insert(pharmacy)
         }
     }
 
@@ -249,14 +181,6 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
             repositorywt.insert(workingTime)
         }
     }
-
-    fun intilizeDatad() {
-
-        _DiplayDocotors.value?.forEach { item ->
-            insertDatad(item)
-        }
-    }
-
     fun intilizeDatal() {
 
         locationitems.value?.forEach { item ->
@@ -270,27 +194,10 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
             insertDatawt(item)
         }
     }
+    fun intilizeDatap() {
 
-    fun updateData(doctor: Doctor) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repositoryd.update(doctor)
+        pharmacyitems.value?.forEach { item ->
+            insertDatap(item)
         }
     }
-
-
-    fun deleteItem() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repositoryd.clear()
-        }
-    }
-
-    fun searchDatabase(searchQuery: String): LiveData<List<Doctor>> {
-        return repositoryd.searchDatabase(searchQuery)
-    }
-
-
-
 }
-
-
-

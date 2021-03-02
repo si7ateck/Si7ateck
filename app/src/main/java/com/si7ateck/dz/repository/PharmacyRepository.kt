@@ -17,5 +17,5 @@ class PharmacyRepository(private val pharmacyDatabaseDao: PharmacyDatabaseDao) {
         pharmacyDatabaseDao.clear()
     }
 
-    val getAllDoctors: LiveData<List<Pharmacy>> = pharmacyDatabaseDao.getAllPharmacies()
+    val getAllPharmacy: LiveData<List<Pharmacy>> = pharmacyDatabaseDao.getAllPharmacies()
 }
