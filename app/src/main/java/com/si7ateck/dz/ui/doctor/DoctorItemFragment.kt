@@ -35,7 +35,8 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
             adapter.setData(data)
         })
 
-
+        //
+       // mDoctorItemViewModel.intilizeDatad()
 
         return binding.root
     }

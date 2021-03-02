@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.si7ateck.dz.setting.SettingsFragment"
+        android:name="com.si7ateck.dz.ui.setting.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/doctor_item"

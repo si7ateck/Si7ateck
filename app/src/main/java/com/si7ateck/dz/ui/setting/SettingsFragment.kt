@@ -1,4 +1,4 @@
-package com.si7ateck.dz.setting
+package com.si7ateck.dz.ui.setting
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
