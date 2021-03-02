@@ -33,13 +33,9 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
 
         setupRecyclerview()
         mDoctorItemViewModel.getAllDoctors.observe(viewLifecycleOwner, Observer {data ->
-           mDoctorItemViewModel.getAllAddress.observe(viewLifecycleOwner, Observer { address ->
-               adapter.setData(data,address,mDoctorItemViewModel)
+
+               adapter.setData(data,mDoctorItemViewModel)
            })
-
-        })
-
-
 
 
         return binding.root
@@ -70,10 +66,7 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
 
         mDoctorItemViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner,
             Observer { list -> list?.let {
-                mDoctorItemViewModel.getAllAddress.observe(viewLifecycleOwner, Observer { address ->
-                    adapter.setData(list,address,mDoctorItemViewModel)
-                })
-
+                adapter.setData(list, mDoctorItemViewModel)
             }
         })
     }

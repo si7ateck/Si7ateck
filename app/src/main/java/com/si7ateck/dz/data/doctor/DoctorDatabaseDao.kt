@@ -2,7 +2,6 @@ package com.si7ateck.dz.data.doctor
 
 import androidx.annotation.NonNull
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
@@ -23,8 +22,8 @@ interface DoctorDatabaseDao {
     fun searchDatabase(searchQuery: String): LiveData<List<Doctor>>
 
 
-    @Query("SELECT _city || _street   FROM doctor_table D ,_location_table L WHERE D._id_firebase=L._id_firebase and D._id_firebase LIKE :address ")
-    fun getAddress(address:String): String
+    @Query("SELECT _city || _street   FROM doctor_table D ,_location_table L WHERE D._id_firebase=L._id_firebase and D._id_firebase LIKE :address Limit 1 ")
+    fun getAddress(address:String): LiveData<String>
 
     @Query("SELECT _city || _street   FROM doctor_table D ,_location_table L WHERE D._id_firebase=L._id_firebase")
     fun getAllAddress(): LiveData<List<String>>
