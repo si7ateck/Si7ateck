@@ -25,9 +25,12 @@ class DoctorRepository(private val doctorDatabaseDao: DoctorDatabaseDao) {
     }
 
     val getAllDoctors: LiveData<List<Doctor>> = doctorDatabaseDao.getAllDoctors()
-    val getAllAddress: LiveData<List<String>> = doctorDatabaseDao.getAllAddress()
+
 
      fun getAddress(addressQuery: String): LiveData<String> {
         return doctorDatabaseDao.getAddress(addressQuery)
+    }
+    fun getWT(idQuery:String): LiveData<String>{
+        return doctorDatabaseDao.getWT(idQuery)
     }
 }

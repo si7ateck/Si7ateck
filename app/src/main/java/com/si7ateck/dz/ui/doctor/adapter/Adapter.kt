@@ -1,19 +1,22 @@
 package com.si7ateck.dz.ui.doctor.adapter
 
-import android.app.Application
+
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.si7ateck.dz.data.doctor.Doctor
 import com.si7ateck.dz.databinding.FragmentDoctorItemBinding
 import com.si7ateck.dz.ui.doctor.DoctorItemViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+
 
 class Adapter: RecyclerView.Adapter<Adapter.MyViewHolder>() {
     var dataList = emptyList<Doctor>()
     lateinit var viewModel:DoctorItemViewModel
+
     class MyViewHolder(private val binding: FragmentDoctorItemBinding) : RecyclerView.ViewHolder(binding.root){
 
          fun bind(doctor: Doctor, viewModel: DoctorItemViewModel){
@@ -21,7 +24,17 @@ class Adapter: RecyclerView.Adapter<Adapter.MyViewHolder>() {
             binding.doctor = doctor
             binding.viewmodeld = viewModel
             
-            
+            binding.baseCardview.setOnClickListener{
+                if (binding.expandableLayout.visibility == View.GONE) {
+                    TransitionManager.beginDelayedTransition(binding.baseCardview, AutoTransition())
+                    binding.expandableLayout.visibility = View.VISIBLE
+
+                } else {
+                    TransitionManager.beginDelayedTransition(binding.baseCardview, AutoTransition())
+                    binding.expandableLayout.visibility = View.GONE
+
+                }
+            }
             //binding.doctorAddess.text = address
 
             binding.executePendingBindings()

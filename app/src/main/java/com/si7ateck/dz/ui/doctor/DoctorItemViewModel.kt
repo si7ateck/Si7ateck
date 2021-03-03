@@ -37,11 +37,13 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
     private val repositoryl: LocationRepository = LocationRepository(locationDatabaseDao)
     private val repositorywt: WorkingTimeRepository = WorkingTimeRepository(wtDatabaseDao)
     val getAllDoctors: LiveData<List<Doctor>> = repositoryd.getAllDoctors
-    val getAllAddress: LiveData<List<String>> = repositoryd.getAllAddress
 
-    var fulladdress =MutableLiveData<String>().apply {  value = "empty"}
+
       fun getAddress(id:String):LiveData<String> {
         return repositoryd.getAddress(id)
+    }
+    fun getWT(id: String):LiveData<String>{
+        return repositoryd.getWT(id)
     }
 
     private val _DiplayDocotors = MutableLiveData<ArrayList<Doctor>>().apply {
