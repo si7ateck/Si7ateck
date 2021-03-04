@@ -13,7 +13,7 @@ import com.si7ateck.dz.data.gps.Location
 import com.si7ateck.dz.data.gps.LocationDatabaseDao
 import com.si7ateck.dz.data.pharmacy.Pharmacy
 import com.si7ateck.dz.data.pharmacy.PharmacyDatabaseDao
-import com.si7ateck.dz.data.types.Converter
+import com.si7ateck.dz.data.Converter
 import com.si7ateck.dz.data.workingtime.WTDatabaseDao
 import com.si7ateck.dz.data.workingtime.WorkingTime
 

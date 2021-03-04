@@ -1,20 +1,16 @@
 package com.si7ateck.dz.ui.doctor
 
 import android.app.Application
-import android.util.Log
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
-import com.google.android.material.imageview.ShapeableImageView
 import com.si7ateck.dz.MyDataBase
 import com.si7ateck.dz.data.doctor.Doctor
 import com.si7ateck.dz.data.gps.Location
-import com.si7ateck.dz.data.types.City
-import com.si7ateck.dz.data.types.Specialty
-import com.si7ateck.dz.data.types.Type
+import com.si7ateck.dz.ui.types.City
+import com.si7ateck.dz.ui.types.Specialty
+import com.si7ateck.dz.ui.types.Type
 import com.si7ateck.dz.data.workingtime.WorkingTime
 import com.si7ateck.dz.repository.DoctorRepository
 import com.si7ateck.dz.repository.LocationRepository

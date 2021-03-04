@@ -1,7 +1,7 @@
 package com.si7ateck.dz.data.user
 
 
-import com.si7ateck.dz.data.types.UserType
+import com.si7ateck.dz.ui.types.UserType
 
 
 object User {

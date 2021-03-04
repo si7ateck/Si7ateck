@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.si7ateck.dz.data.gps.Location
-import com.si7ateck.dz.data.types.BloodType
+import com.si7ateck.dz.ui.types.BloodType
 
 
 @Entity(tableName = "donner_table",

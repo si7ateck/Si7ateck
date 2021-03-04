@@ -72,7 +72,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="194dp"
                             android:scaleType="centerCrop"
-                            app:imageUrl="@{doctor._image}" />
+                            app:getImageFromUri="@{doctor._image}" />
 
 
                         <LinearLayout
@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -176,6 +176,7 @@
 
 
                     <TextView
+                        android:id="@+id/oc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="18dp"
