@@ -29,6 +29,9 @@ class PharmacyFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = FragmentItemListBinding.inflate(inflater, container, false)
         _binding!!.lifecycleOwner = this
 
+        mpharmacyViewModel.intilizeDatal()
+        mpharmacyViewModel.intilizeDatawt()
+        mpharmacyViewModel.intilizeDatap()
 
         setupRecyclerview()
 
