@@ -2,19 +2,18 @@ package com.si7ateck.dz.ui.doctor
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.SearchView
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.si7ateck.dz.R
 import com.si7ateck.dz.databinding.FragmentItemListBinding
 import com.si7ateck.dz.ui.doctor.adapter.Adapter
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
-class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
+class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener {
 
     private val mDoctorItemViewModel: DoctorItemViewModel by viewModels()
 
@@ -31,10 +30,8 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
         _binding!!.lifecycleOwner = this
         adapter = Adapter()
 
-        mDoctorItemViewModel.intilizeDatal()
-        mDoctorItemViewModel.intilizeDatawt()
-        mDoctorItemViewModel.intilizeDatad()
 
+        setHasOptionsMenu(true)
 
         setupRecyclerview()
         mDoctorItemViewModel.getAllDoctors.observe(viewLifecycleOwner, Observer {data ->
@@ -54,6 +51,16 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.list_fragment_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+        Log.d("iiiiiiiii", searchView.toString())
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
             searchThroughDatabase(query)
@@ -61,6 +68,7 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
         return true    }
 
     override fun onQueryTextChange(query: String?): Boolean {
+        Log.d("iiiiiiiii", (query == null).toString())
         if (query != null) {
             searchThroughDatabase(query)
         }
@@ -68,7 +76,7 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
     }
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
-
+        Log.d("akram",searchQuery)
         mDoctorItemViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner,
             Observer { list -> list?.let {
                 adapter.setData(list, mDoctorItemViewModel)

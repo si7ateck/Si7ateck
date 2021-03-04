@@ -56,13 +56,26 @@ class BindingAdapters {
         @BindingAdapter("android:getImageFromUri")
         @JvmStatic
         fun getImageFromUri(view: ShapeableImageView, imageUri: String) {
-            Glide.with(view.context)
-                .load(imageUri)
-                .into(view)
-
+            if(imageUri.equals("R.drawable.images")) {
+                Glide.with(view.context)
+                    .load(R.drawable.images)
+                    .into(view)
+            }else if (imageUri.equals("R.drawable.ppng")){
+                Glide.with(view.context)
+                    .load("R.drawable.ppng")
+                    .into(view)
+            }else {
+                Glide.with(view.context)
+                    .load(imageUri)
+                    .into(view)
+            }
             Log.d("ImageUriAkram", "imageUri is $imageUri")
 
-        }
+            }
+
+
+
+
 
 
         @BindingAdapter("android:setTextBinding")
@@ -82,22 +95,9 @@ class BindingAdapters {
         fun settime(view: GridLayout, time: LiveData<String>) {
             val child1 = view.findViewById<TextView>(R.id.child1)
             val child2 = view.findViewById<TextView>(R.id.child2)
-            val parent = view.findViewById<TextView>(R.id.oc)
-            val currentDay = SimpleDateFormat("EEEE" ).format(Date())
-            val currentTime = SimpleDateFormat("HH:mm").format(Date())
-            val stringtoDate = SimpleDateFormat("HH:mm")
+
             time.observe(view.lifecycleOwner!!, Observer { it ->
                 val timeaff = it.split("\$?\$")
-                 val HandM = timeaff[5].split(" - ")
-               // val starttime = stringtoDate.parse(HandM[0])
-                val endtime = stringtoDate.parse(HandM[1])
-                var calendar = Calendar.getInstance().time
-                val starttime : LocalTime = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    LocalTime.parse(HandM[0])
-                } else {
-                    TODO("VERSION.SDK_INT < O")
-                }
-                if (currentTime.)
                 child1.text = timeaff[0]
                 child2.text = timeaff[1]
                 child2.setTextColor(view.resources.getColor(R.color.primaryColor))

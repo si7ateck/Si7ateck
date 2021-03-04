@@ -72,7 +72,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="194dp"
                             android:scaleType="centerCrop"
-                            app:getImageFromUri="@{doctor._image}" />
+                            android:getImageFromUri="@{doctor._image}" />
 
 
                         <LinearLayout
@@ -131,7 +131,7 @@
                                     android:layout_marginStart="8dp"
                                     android:text="4.5"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="@color/secondaryTextColor"
+                                    android:textColor="#ffffffff"
                                     android:textSize="12sp" />
 
                                 <TextView
@@ -140,7 +140,7 @@
                                     android:layout_marginStart="4dp"
                                     android:text="(873)"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="@color/secondaryTextColor"
+                                    android:textColor="#ffffffff"
                                     android:textSize="12sp" />
 
 
@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
