@@ -1,8 +1,7 @@
-package com.si7ateck.dz.data.types
+package com.si7ateck.dz.data
 
 import androidx.room.TypeConverter
-import com.si7ateck.dz.data.types.Specialty
-import com.si7ateck.dz.data.types.Type
+import com.si7ateck.dz.ui.types.*
 
 class Converter {
     @TypeConverter
@@ -34,7 +33,7 @@ class Converter {
         return userType.name
     }
     @TypeConverter
-    fun toUserType(userType: String):UserType {
+    fun toUserType(userType: String): UserType {
         return UserType.valueOf(userType)
     }
     @TypeConverter
@@ -42,7 +41,7 @@ class Converter {
         return bloodType.name
     }
     @TypeConverter
-    fun toBloodType(bloodType : String):BloodType {
+    fun toBloodType(bloodType : String): BloodType {
         return BloodType.valueOf(bloodType)
     }
 }

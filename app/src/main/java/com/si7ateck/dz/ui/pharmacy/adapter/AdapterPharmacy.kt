@@ -1,11 +1,10 @@
-package com.si7ateck.dz.ui.pharmacy2.adapter
+package com.si7ateck.dz.ui.pharmacy.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.si7ateck.dz.data.pharmacy.Pharmacy
-import com.si7ateck.dz.databinding.FragmentDoctorItemBinding
 import com.si7ateck.dz.databinding.FragmentPharmacyBinding
 
 class AdapterPharmacy : RecyclerView.Adapter<AdapterPharmacy.MyViewHolder>() {

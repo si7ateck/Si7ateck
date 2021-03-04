@@ -1,6 +1,7 @@
 package com.si7ateck.dz.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.si7ateck.dz.data.doctor.Doctor
 
 import com.si7ateck.dz.data.doctor.DoctorDatabaseDao
@@ -24,9 +25,12 @@ class DoctorRepository(private val doctorDatabaseDao: DoctorDatabaseDao) {
     }
 
     val getAllDoctors: LiveData<List<Doctor>> = doctorDatabaseDao.getAllDoctors()
-    val getAllAddress: LiveData<List<String>> = doctorDatabaseDao.getAllAddress()
+
 
      fun getAddress(addressQuery: String): LiveData<String> {
         return doctorDatabaseDao.getAddress(addressQuery)
+    }
+    fun getWT(idQuery:String): LiveData<String>{
+        return doctorDatabaseDao.getWT(idQuery)
     }
 }

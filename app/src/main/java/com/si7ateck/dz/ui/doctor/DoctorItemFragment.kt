@@ -31,6 +31,11 @@ class DoctorItemFragment: Fragment(),SearchView.OnQueryTextListener {
         _binding!!.lifecycleOwner = this
         adapter = Adapter()
 
+        mDoctorItemViewModel.intilizeDatal()
+        mDoctorItemViewModel.intilizeDatawt()
+        mDoctorItemViewModel.intilizeDatad()
+
+
         setupRecyclerview()
         mDoctorItemViewModel.getAllDoctors.observe(viewLifecycleOwner, Observer {data ->
 

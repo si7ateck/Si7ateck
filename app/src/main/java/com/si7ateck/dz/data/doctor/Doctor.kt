@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.si7ateck.dz.data.gps.Location
-import com.si7ateck.dz.data.types.Specialty
-import com.si7ateck.dz.data.types.Type
+import com.si7ateck.dz.ui.types.Specialty
+import com.si7ateck.dz.ui.types.Type
 import com.si7ateck.dz.data.workingtime.WorkingTime
 
 @Entity(

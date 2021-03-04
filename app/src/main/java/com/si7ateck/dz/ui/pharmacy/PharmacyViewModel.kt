@@ -1,11 +1,11 @@
-package com.si7ateck.dz.ui.pharmacy2
+package com.si7ateck.dz.ui.pharmacy
 
 import android.app.Application
 import androidx.lifecycle.*
 import com.si7ateck.dz.MyDataBase
 import com.si7ateck.dz.data.gps.Location
 import com.si7ateck.dz.data.pharmacy.Pharmacy
-import com.si7ateck.dz.data.types.City
+import com.si7ateck.dz.ui.types.City
 import com.si7ateck.dz.data.workingtime.WorkingTime
 import com.si7ateck.dz.repository.LocationRepository
 import com.si7ateck.dz.repository.PharmacyRepository

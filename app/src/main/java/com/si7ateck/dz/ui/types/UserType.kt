@@ -1,4 +1,4 @@
-package com.si7ateck.dz.data.types
+package com.si7ateck.dz.ui.types
 
 enum class UserType {
     DOCTOR,PHARMACY,DONNER,CUSTOMER

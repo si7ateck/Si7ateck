@@ -3,9 +3,8 @@ package com.si7ateck.dz.data.gps
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.si7ateck.dz.data.types.City
+import com.si7ateck.dz.ui.types.City
 
     @Entity(tableName = "_location_table"
 

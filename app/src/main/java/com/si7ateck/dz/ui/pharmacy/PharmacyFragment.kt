@@ -1,4 +1,4 @@
-package com.si7ateck.dz.ui.pharmacy2
+package com.si7ateck.dz.ui.pharmacy
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.si7ateck.dz.databinding.FragmentItemListBinding
-import com.si7ateck.dz.ui.pharmacy2.adapter.AdapterPharmacy
+import com.si7ateck.dz.ui.pharmacy.adapter.AdapterPharmacy
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
@@ -28,8 +28,6 @@ class PharmacyFragment : Fragment(), SearchView.OnQueryTextListener {
     ): View? {
         _binding = FragmentItemListBinding.inflate(inflater, container, false)
         _binding!!.lifecycleOwner = this
-
-        mpharmacyViewModel.intilizeDatap()
 
 
         setupRecyclerview()

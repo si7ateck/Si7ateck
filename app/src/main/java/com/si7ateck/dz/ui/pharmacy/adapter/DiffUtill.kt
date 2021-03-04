@@ -1,4 +1,4 @@
-package com.si7ateck.dz.ui.pharmacy2.adapter
+package com.si7ateck.dz.ui.pharmacy.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.si7ateck.dz.data.pharmacy.Pharmacy
