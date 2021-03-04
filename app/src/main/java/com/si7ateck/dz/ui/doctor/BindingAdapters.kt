@@ -14,6 +14,7 @@ import androidx.lifecycle.*
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
+import com.si7ateck.dz.R
 import kotlinx.coroutines.launch
 
 class BindingAdapters {
@@ -42,9 +43,16 @@ class BindingAdapters {
         @BindingAdapter("android:getImageFromUri")
         @JvmStatic
         fun getImageFromUri(view: ShapeableImageView, imageUri: String){
+
+            if (imageUri.equals("@drawable/images")){
+
+                Glide.with(view.context).load(R.drawable.images)
+                    .into(view)
+            } else {
                 Glide.with(view.context)
                     .load(imageUri)
                     .into(view)
+            }
 
             Log.d("ImageUriAkram","imageUri is ${imageUri}" )
 

@@ -12,16 +12,57 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="keep_me_sign_in">Keep me sign in</string>
+    <string name="account_managing">Account managing</string>
+
+
+
+
+
+    <!-- Preference Titles -->
+    <string name="compte_sahti_fi_yedi">Compte Sahti Fi Yedi</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- compte Preferences -->
+    <string name="sauvgarder">Sauvgarder mes données</string>
+    <string name="sauvgarder_on">Vous donnés sont sauvgarder en mode offline</string>
+    <string name="sauvgarder_off">Vous risquez de perdre tout les informations sur vous en cas de coupure internet </string>
+
+
+    <!-- Gestion Preferences -->
+    <string name="gestion_globale">Gestion globale</string>
+    <string name="langue">Langue</string>
+    <string name="localisation">Localisation</string>
+
+    <string name="localisation_gps_autoriser">Vous autorisez la détection de votre emplacement via le GPS</string>
+    <string name="localisation_gps_non_autoriser">Vous n\'autorisez pas la détection de votre emplacement via le GPS</string>
+
+
+    <!-- langues Preferences -->
+    <string name="arabe">Arabe</string>
+    <string name="french">Français</string>
+    <string name="english">English</string>
+
+    <!-- mode night Preferences -->
+    <string name="dark_mode">Dark Mode</string>
+    <string name="dark_mode_def_value">MODE_NIGHT_FOLLOW_SYSTEM</string>
+
+
+    <!-- GPS Preferences -->
+    <string name="non_autoriser">Activer</string>
+    <string name="autoriser">Désactiver</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Mise à jour du données</string>
+    <string name="attachment_title">Mode de téléchargement</string>
+    <string name="attachment_summary_on">Téléchargez uniquement par Wifi</string>
+    <string name="attachment_summary_off">Téléchargez automatiquement les mises à jour lorsque vous etes connecté à un réseau Wi-Fi ou bien les réseaux mobiles</string>
+    <string name="pr_prenom">Prénom</string>
+    <string name="nom">Nom</string>
 </resources>

@@ -36,8 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:id="@+id/doctor_image"
+                android:getImageFromUri="@{doctor._image}"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{doctor._image}"/>
+                />
 
 
             <LinearLayout
