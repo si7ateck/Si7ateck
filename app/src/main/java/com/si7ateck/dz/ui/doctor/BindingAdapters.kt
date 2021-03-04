@@ -6,10 +6,11 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
-import android.os.Build
+import com.si7ateck.dz.utility.ContextUtils
 import android.util.Log
 import android.view.View
 import android.widget.GridLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.databinding.BindingAdapter
@@ -56,7 +57,16 @@ class BindingAdapters {
         @BindingAdapter("android:getImageFromUri")
         @JvmStatic
         fun getImageFromUri(view: ShapeableImageView, imageUri: String) {
-            Glide.with(view.context)
+            if (imageUri.equals("@drawable/images")){
+                Glide.with(view.context)
+                    .load(R.drawable.images)
+                    .into(view)
+            } else if (imageUri.equals("@drawable/ppng")){
+
+                Glide.with(view.context)
+                    .load(R.drawable.ppng)
+                    .into(view)
+            }else Glide.with(view.context)
                 .load(imageUri)
                 .into(view)
 
@@ -79,25 +89,42 @@ class BindingAdapters {
 
         @BindingAdapter("android:settime")
         @JvmStatic
-        fun settime(view: GridLayout, time: LiveData<String>) {
+        fun settime(view: LinearLayout, time: LiveData<String>) {
             val child1 = view.findViewById<TextView>(R.id.child1)
             val child2 = view.findViewById<TextView>(R.id.child2)
             val parent = view.findViewById<TextView>(R.id.oc)
+
+
+
             val currentDay = SimpleDateFormat("EEEE" ).format(Date())
             val currentTime = SimpleDateFormat("HH:mm").format(Date())
-            val stringtoDate = SimpleDateFormat("HH:mm")
+
+
+
             time.observe(view.lifecycleOwner!!, Observer { it ->
-                val timeaff = it.split("\$?\$")
-                 val HandM = timeaff[5].split(" - ")
-               // val starttime = stringtoDate.parse(HandM[0])
-                val endtime = stringtoDate.parse(HandM[1])
-                var calendar = Calendar.getInstance().time
-                val starttime : LocalTime = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    LocalTime.parse(HandM[0])
+                 val timeaff = it.split("\$?\$")
+
+                if (timeaff[5].contains(" - ")){
+                    val HandM = timeaff[4].split(" \\- ")
+                    Log.d("timeTest", "index of ${HandM.size}")
+
+                    if (currentDay.decapitalize().equals("thursday")) {
+
+                        if (ContextUtils.isTimeBetweenTwoTime(HandM[0],HandM[1],currentTime)){
+
+                            parent.text = "Open"
+                            Log.d("timeTest", "${currentTime} is include in ${HandM[0]} - ${HandM[1]}}")
+                        }else{
+                            parent.text = "Close"
+                            Log.d("timeTest", "${currentTime} is not include")}
+
+                    } else Log.d("timeTest", "today is not thursday")
+
                 } else {
-                    TODO("VERSION.SDK_INT < O")
-                }
-                if (currentTime.)
+                    parent.text = "Close"
+                    Log.d("timeTest", "timeaff[5] is ${timeaff[5]} and doesn't contain ' - ' ")}
+
+
                 child1.text = timeaff[0]
                 child2.text = timeaff[1]
                 child2.setTextColor(view.resources.getColor(R.color.primaryColor))
