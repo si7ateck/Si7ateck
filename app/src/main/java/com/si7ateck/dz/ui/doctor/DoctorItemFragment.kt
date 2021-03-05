@@ -96,13 +96,9 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
     }
 
     override fun onExpand(position: Int, size : Int) {
-        // linearLayoutManager.stackFromEnd = linearLayoutManager.stackFromEnd != true
 
         val firstVisiblePosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
         val lastVisiblePosition = linearLayoutManager.findLastCompletelyVisibleItemPosition()
-
-//        linearLayoutManager.stackFromEnd =
-//            !(position == firstVisiblePosition || position == firstVisiblePosition +1)
 
 
         if (position == firstVisiblePosition || position == lastVisiblePosition - 1) {
