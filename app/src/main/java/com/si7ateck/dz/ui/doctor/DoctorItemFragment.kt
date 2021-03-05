@@ -7,19 +7,21 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.si7ateck.dz.R
 import com.si7ateck.dz.databinding.FragmentItemListBinding
 import com.si7ateck.dz.ui.doctor.adapter.Adapter
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
-class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener {
+class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandListener {
 
     private val mDoctorItemViewModel: DoctorItemViewModel by viewModels()
 
     private var _binding: FragmentItemListBinding? = null
     private val binding get() = _binding!!
     private lateinit var  adapter: Adapter
+    private lateinit var linearLayoutManager : LinearLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +30,7 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener {
     ): View? {
         _binding = FragmentItemListBinding.inflate(inflater, container, false)
         _binding!!.lifecycleOwner = this
-        adapter = Adapter()
+        adapter = Adapter(this)
 
 
         setHasOptionsMenu(true)
@@ -39,11 +41,19 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener {
                adapter.setData(data,mDoctorItemViewModel)
            })
 
+        mDoctorItemViewModel.intilizeDatad()
 
         return binding.root
     }
     private fun setupRecyclerview() {
         val recyclerView = binding.recyclerView
+
+        linearLayoutManager = LinearLayoutManager(getActivity())
+        recyclerView.layoutManager = linearLayoutManager
+
+
+        mDoctorItemViewModel.intilizeDatad()
+
         recyclerView.adapter = adapter
         recyclerView.itemAnimator = SlideInUpAnimator().apply {
             addDuration = 300
@@ -56,7 +66,6 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener {
 
         val search = menu.findItem(R.id.menu_search)
         val searchView = search.actionView as? SearchView
-        Log.d("iiiiiiiii", searchView.toString())
         searchView?.isSubmitButtonEnabled = true
         searchView?.setOnQueryTextListener(this)
     }
@@ -68,7 +77,6 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener {
         return true    }
 
     override fun onQueryTextChange(query: String?): Boolean {
-        Log.d("iiiiiiiii", (query == null).toString())
         if (query != null) {
             searchThroughDatabase(query)
         }
@@ -83,4 +91,39 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener {
             }
         })
     }
+
+    override fun onExpand(position: Int, size : Int) {
+       // linearLayoutManager.stackFromEnd = linearLayoutManager.stackFromEnd != true
+
+        val firstVisiblePosition = linearLayoutManager.findFirstVisibleItemPosition()
+        val lastVisiblePosition = linearLayoutManager.findLastVisibleItemPosition()
+
+//        linearLayoutManager.stackFromEnd =
+//            !(position == firstVisiblePosition || position == firstVisiblePosition +1)
+
+
+        if ( position == 0 || position == size - 1  ) {
+
+            linearLayoutManager.stackFromEnd = position != 0
+
+        } else if (position == firstVisiblePosition || position == firstVisiblePosition + 1){
+
+            binding.recyclerView.smoothScrollToPosition(position-1)
+        } else if (position == lastVisiblePosition ){
+            binding.recyclerView.smoothScrollToPosition(position+1)
+
+        }
+
+        Log.d("RecyclerBehavior", "first pos is ${firstVisiblePosition}")
+        Log.d("RecyclerBehavior", "last pos is ${lastVisiblePosition}")
+
+
+
+
+    }
+
+
+}
+interface ExpandListener {
+    fun onExpand(position: Int, size : Int)
 }

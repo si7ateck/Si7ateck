@@ -1,6 +1,8 @@
 package com.si7ateck.dz.ui.doctor
 
+import android.app.Activity
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

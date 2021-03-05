@@ -131,7 +131,7 @@
                                     android:layout_marginStart="8dp"
                                     android:text="4.5"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="#ffffffff"
+                                    android:textColor="@color/secondaryTextColor"
                                     android:textSize="12sp" />
 
                                 <TextView
@@ -169,6 +169,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
+                    android:settime="@{viewmodeld.getWT(doctor._id_firebase)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -189,7 +190,6 @@
                     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:settime="@{viewmodeld.getWT(doctor._id_firebase)}"
                         android:rowCount="2">
 
 
