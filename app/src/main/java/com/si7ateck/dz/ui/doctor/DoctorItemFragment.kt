@@ -82,6 +82,9 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
         }
         return true
     }
+
+
+
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
         Log.d("akram",searchQuery)
@@ -93,18 +96,21 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
     }
 
     override fun onExpand(position: Int, size : Int) {
-       // linearLayoutManager.stackFromEnd = linearLayoutManager.stackFromEnd != true
+        // linearLayoutManager.stackFromEnd = linearLayoutManager.stackFromEnd != true
 
-        val firstVisiblePosition = linearLayoutManager.findFirstVisibleItemPosition()
-        val lastVisiblePosition = linearLayoutManager.findLastVisibleItemPosition()
+        val firstVisiblePosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
+        val lastVisiblePosition = linearLayoutManager.findLastCompletelyVisibleItemPosition()
 
 //        linearLayoutManager.stackFromEnd =
 //            !(position == firstVisiblePosition || position == firstVisiblePosition +1)
 
 
-        if ( position == 0 || position == size - 1  ) {
+        if (position == firstVisiblePosition || position == lastVisiblePosition - 1) {
+            linearLayoutManager.stackFromEnd = position != firstVisiblePosition
 
-            linearLayoutManager.stackFromEnd = position != 0
+            /*   if ( position == 0 || position == size - 1  ) {
+
+            linearLayoutManager.stackFromEnd = position != firstVisiblePosition
 
         } else if (position == firstVisiblePosition || position == firstVisiblePosition + 1){
 
@@ -112,18 +118,18 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
         } else if (position == lastVisiblePosition ){
             binding.recyclerView.smoothScrollToPosition(position+1)
 
+        }*/
+
+            Log.d("RecyclerBehavior", "first pos is ${firstVisiblePosition}")
+            Log.d("RecyclerBehavior", "last pos is ${lastVisiblePosition}")
+
+
         }
 
-        Log.d("RecyclerBehavior", "first pos is ${firstVisiblePosition}")
-        Log.d("RecyclerBehavior", "last pos is ${lastVisiblePosition}")
-
-
-
-
     }
-
-
 }
 interface ExpandListener {
     fun onExpand(position: Int, size : Int)
 }
+
+
