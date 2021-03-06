@@ -7,19 +7,34 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.si7ateck.dz.utility.NestedCoordinatorLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:name="com.si7ateck.dz.ui.doctor.DoctorItemFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="60dp"
+        android:clipToPadding="false"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".ui.doctor.DoctorItemFragment"
+        tools:listitem="@layout/fragment_doctor_item" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:name="com.si7ateck.dz.ui.doctor.DoctorItemFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:layoutManager="LinearLayoutManager"
-            tools:context=".ui.doctor.DoctorItemFragment"
-            tools:listitem="@layout/fragment_doctor_item" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_baseline_filter_list_24"
+        app:layout_behavior=".utility.ScrollingFABBehavior"
+        app:maxImageSize="34dp" />
+    </com.si7ateck.dz.utility.NestedCoordinatorLayout>
+
 </layout>

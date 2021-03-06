@@ -4,6 +4,7 @@ package com.si7ateck.dz.ui.doctor.adapter
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,37 +20,13 @@ class Adapter(var expandListener : ExpandListener): RecyclerView.Adapter<Adapter
     var dataList = emptyList<Doctor>()
     lateinit var viewModel:DoctorItemViewModel
 
-    class MyViewHolder(private val binding: FragmentDoctorItemBinding, private val expandListener : ExpandListener) : RecyclerView.ViewHolder(binding.root){
+    private lateinit var recyclerView: RecyclerView
 
-         fun bind(doctor: Doctor, viewModel: DoctorItemViewModel, position: Int, size :Int){
+    var oldPosition : Int = -1
 
-            binding.doctor = doctor
-            binding.viewmodeld = viewModel
+    class MyViewHolder(val binding: FragmentDoctorItemBinding) : RecyclerView.ViewHolder(binding.root){
 
-
-             binding.baseCardview.setOnClickListener { view ->
-                 if (binding.expandableLayout.visibility == View.GONE || binding.expandableLayout.visibility == View.INVISIBLE){
-                     expand()
-
-                     expandListener?.let {
-                             expandListener.onExpand(position , size )
-                     }
-
-                 }else{
-                     collapse()
-
-                    /* expandListener?.let {
-                     //    if ( position == 0 || position == size - 1  )
-                             expandListener.onExpand(position)
-                     }*/
-                 }
-
-             }
-            binding.executePendingBindings()
-
-         }
-
-        private fun expand(){
+         fun expand(){
             binding.expandableLayout.visibility = View.VISIBLE
             val widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
             val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
@@ -60,7 +37,7 @@ class Adapter(var expandListener : ExpandListener): RecyclerView.Adapter<Adapter
         }
 
 
-        private fun collapse() {
+         fun collapse() {
             val finalHeight = binding.expandableLayout.getHeight()
 
             val mAnimator = slideAnimator(finalHeight, 0)
@@ -73,9 +50,9 @@ class Adapter(var expandListener : ExpandListener): RecyclerView.Adapter<Adapter
 
             mAnimator.start()
 
-       }
+        }
 
-        private fun slideAnimator(start: Int, end: Int): ValueAnimator {
+         fun slideAnimator(start: Int, end: Int): ValueAnimator {
 
             var animator = ValueAnimator.ofInt(start, end)
 
@@ -89,13 +66,12 @@ class Adapter(var expandListener : ExpandListener): RecyclerView.Adapter<Adapter
 
         }
 
-
         companion object{
-            fun from(parent: ViewGroup, expandListener:ExpandListener): MyViewHolder {
+            fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = FragmentDoctorItemBinding.inflate(layoutInflater, parent, false)
                 return MyViewHolder(
-                    binding, expandListener
+                    binding
                 )
             }
         }
@@ -103,18 +79,70 @@ class Adapter(var expandListener : ExpandListener): RecyclerView.Adapter<Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder.from(
-            parent, expandListener
+            parent
         )
     }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        this.recyclerView = recyclerView
+
+    }
+
+
+
 
     override fun getItemCount(): Int {
         return  dataList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = dataList[position]
-        holder.bind(currentItem,viewModel, position, dataList.size)
+        val doctor = dataList[position]
+        holder.binding.doctor = doctor
+        holder.binding.viewmodeld = viewModel
+
+
+
+        holder.binding.baseCardview.setOnClickListener { view ->
+            if (holder.binding.expandableLayout.visibility == View.GONE || holder.binding.expandableLayout.visibility == View.INVISIBLE){
+
+
+
+                Log.d("erererr", "inside it")
+                holder.expand()
+
+
+
+                expandListener?.let {
+                    expandListener.onExpand(position , dataList.size )
+                }
+
+
+                // collapse previously expanded view
+                var oldViewHolder =
+                    recyclerView.findViewHolderForAdapterPosition(oldPosition) as? MyViewHolder
+
+
+                Log.d("erererr", "oldview is $oldViewHolder")
+
+
+                oldViewHolder?.let {
+                    it.collapse()
+                }
+
+                oldPosition = position
+                Log.d("erererr", "old position is $oldPosition")
+
+            }else{
+                holder.collapse()
+                oldPosition = -1
+            }
+
+        }
+        holder.binding.executePendingBindings()
     }
+
+
 
     fun setData(doctorlist: List<Doctor>,viewModel: DoctorItemViewModel){
         val doctorDiffUtil = DiffUtill(dataList, doctorlist)

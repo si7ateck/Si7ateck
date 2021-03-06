@@ -17,7 +17,7 @@ interface DoctorDatabaseDao {
     @Query("DELETE FROM doctor_table")
     suspend fun clear()
 
-    @Query("SELECT * FROM doctor_table ORDER BY _Id DESC" )
+    @Query("SELECT * FROM doctor_table WHERE _id_firebase in ( Select _id_firebase from _location_table  ) and _id_firebase in ( Select _id_firebase from _location_table  ) ORDER BY _Id DESC" )
     fun getAllDoctors(): LiveData<List<Doctor>>
 
     @Query("SELECT * FROM doctor_table WHERE _name LIKE :searchQuery")

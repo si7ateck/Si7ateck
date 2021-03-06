@@ -57,11 +57,11 @@ class BindingAdapters {
         @BindingAdapter("android:getImageFromUri")
         @JvmStatic
         fun getImageFromUri(view: ShapeableImageView, imageUri: String) {
-            if (imageUri.equals("@drawable/images")){
+            if (imageUri.equals("R.drawable.images")){
                 Glide.with(view.context)
                     .load(R.drawable.images)
                     .into(view)
-            } else if (imageUri.equals("@drawable/ppng")){
+            } else if (imageUri.equals("R.drawable.ppng")){
 
                 Glide.with(view.context)
                     .load(R.drawable.ppng)

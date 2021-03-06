@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.si7ateck.dz.R
 import com.si7ateck.dz.databinding.FragmentItemListBinding
 import com.si7ateck.dz.ui.doctor.adapter.Adapter
+import com.si7ateck.dz.utility.ScrollingFABBehavior
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
@@ -41,9 +44,7 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
                adapter.setData(data,mDoctorItemViewModel)
            })
 
-        mDoctorItemViewModel.intilizeDatad()
-
-        return binding.root
+         return binding.root
     }
     private fun setupRecyclerview() {
         val recyclerView = binding.recyclerView
@@ -58,6 +59,7 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
         recyclerView.itemAnimator = SlideInUpAnimator().apply {
             addDuration = 300
         }
+
 
     }
 
@@ -96,34 +98,18 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
     }
 
     override fun onExpand(position: Int, size : Int) {
-
-        val firstVisiblePosition = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
-        val lastVisiblePosition = linearLayoutManager.findLastCompletelyVisibleItemPosition()
-
-
-        if (position == firstVisiblePosition || position == lastVisiblePosition - 1) {
-            linearLayoutManager.stackFromEnd = position != firstVisiblePosition
-
-            /*   if ( position == 0 || position == size - 1  ) {
-
-            linearLayoutManager.stackFromEnd = position != firstVisiblePosition
-
-        } else if (position == firstVisiblePosition || position == firstVisiblePosition + 1){
-
-            binding.recyclerView.smoothScrollToPosition(position-1)
-        } else if (position == lastVisiblePosition ){
-            binding.recyclerView.smoothScrollToPosition(position+1)
-
-        }*/
-
-            Log.d("RecyclerBehavior", "first pos is ${firstVisiblePosition}")
-            Log.d("RecyclerBehavior", "last pos is ${lastVisiblePosition}")
+         if ( position == 0 || position == size - 1  ) {
+            linearLayoutManager.stackFromEnd = position != 0
+        }
 
 
+        if (position < linearLayoutManager.findFirstCompletelyVisibleItemPosition() || position > linearLayoutManager.findLastCompletelyVisibleItemPosition()) {
+            binding.recyclerView.smoothScrollToPosition(position)
         }
 
     }
 }
+
 interface ExpandListener {
     fun onExpand(position: Int, size : Int)
 }
