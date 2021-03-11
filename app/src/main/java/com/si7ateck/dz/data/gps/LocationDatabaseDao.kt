@@ -12,4 +12,7 @@ interface LocationDatabaseDao {
 
     @Query("DELETE FROM _location_table")
     suspend fun clear()
+
+    @Delete
+    suspend fun delete(location: Location)
 }

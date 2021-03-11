@@ -1,10 +1,14 @@
 package com.si7ateck.dz.data.doctor
 
-import androidx.annotation.NonNull
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.si7ateck.dz.data.gps.Location
+import com.si7ateck.dz.data.gps.LocationDatabaseDao
+import com.si7ateck.dz.data.workingtime.WorkingTime
 import com.si7ateck.dz.ui.types.City
 import com.si7ateck.dz.ui.types.Specialty
+import java.nio.file.Files.delete
+
 
 @Dao
 interface DoctorDatabaseDao {
@@ -17,7 +21,10 @@ interface DoctorDatabaseDao {
     @Query("DELETE FROM doctor_table")
     suspend fun clear()
 
-    @Query("SELECT * FROM doctor_table ORDER BY _Id DESC" )
+    @Delete
+    suspend fun delete(doctor: Doctor)
+
+    @Query("SELECT * FROM doctor_table WHERE _id_firebase in ( Select _id_firebase from _location_table  ) and _id_firebase in ( Select _id_firebase from _location_table  ) ORDER BY _Id DESC" )
     fun getAllDoctors(): LiveData<List<Doctor>>
 
     @Query("SELECT * FROM doctor_table WHERE _name LIKE :searchQuery")
@@ -31,4 +38,7 @@ interface DoctorDatabaseDao {
 
     @Query("SELECT * FROM doctor_table D WHERE D._speciality LIKE :specialty and D._name LIKE :name and D._id_firebase = ( SELECT _id_firebase FROM _location_table L WHERE L._city LIKE :city ) ")
     fun searchDoctor(specialty: Specialty,name:String,city: City) :  LiveData<List<Doctor>>
+
+
 }
+

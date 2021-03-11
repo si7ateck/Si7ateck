@@ -1,8 +1,6 @@
 package com.si7ateck.dz.ui.doctor
 
-import android.app.Activity
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,26 +20,54 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class DoctorItemViewModel(application: Application) : AndroidViewModel(application) {
+
+
     private val doctorDatabaseDao = MyDataBase.getDatabase(
         application
     ).doctorDatabaseDao()
+
     private val wtDatabaseDao = MyDataBase.getDatabase(
         application
     ).wtDatabaseDao()
+
     private val locationDatabaseDao = MyDataBase.getDatabase(
         application
     ).locationDatabaseDao()
-    private val repositoryd: DoctorRepository = DoctorRepository(doctorDatabaseDao)
-    private val repositoryl: LocationRepository = LocationRepository(locationDatabaseDao)
-    private val repositorywt: WorkingTimeRepository = WorkingTimeRepository(wtDatabaseDao)
-    val getAllDoctors: LiveData<List<Doctor>> = repositoryd.getAllDoctors
 
 
-      fun getAddress(id:String):LiveData<String> {
-        return repositoryd.getAddress(id)
+    private val myApplication = application
+
+    private val doctorRepository: DoctorRepository = DoctorRepository(doctorDatabaseDao)
+    private val locationRepository: LocationRepository = LocationRepository(locationDatabaseDao)
+    private val workingTimeRepository: WorkingTimeRepository = WorkingTimeRepository(wtDatabaseDao)
+
+
+    val getAllDoctors: LiveData<List<Doctor>> = doctorRepository.getAllDoctors
+
+
+    fun deleteTest(doctor: Doctor, location: Location, workingTime: WorkingTime){
+
+        viewModelScope.launch(Dispatchers.IO) {
+            MyDataBase.getDatabase(myApplication).runInTransaction {
+                viewModelScope.launch(Dispatchers.IO) {
+                    doctorRepository.delete(doctor)
+                    locationRepository.delete(location)
+                    workingTimeRepository.delete(workingTime)
+                }
+            }
+
+        }
+
     }
+
+
+    fun getAddress(id:String):LiveData<String> {
+        return doctorRepository.getAddress(id)
+    }
+
+
     fun getWT(id: String):LiveData<String>{
-        return repositoryd.getWT(id)
+        return doctorRepository.getWT(id)
     }
 
     private val _DiplayDocotors = MutableLiveData<ArrayList<Doctor>>().apply {
@@ -103,7 +129,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         )
     }
 
-    val DiplayDocotors: LiveData<ArrayList<Doctor>> = _DiplayDocotors
+    val DisplayDocotors: LiveData<ArrayList<Doctor>> = _DiplayDocotors
 
     private val _locationitems = MutableLiveData<ArrayList<Location>>().apply {
         value = ArrayList<Location>()
@@ -231,60 +257,60 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
     val wtitems: LiveData<ArrayList<WorkingTime>> = _wtitems
 
 
-    fun insertDatad(doctor: Doctor) {
+    fun insertDoctor(doctor: Doctor) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryd.insert(doctor)
+            doctorRepository.insert(doctor)
         }
     }
 
-    fun insertDatal(location: Location) {
+    fun insertLocation(location: Location) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryl.insert(location)
+            locationRepository.insert(location)
         }
     }
 
-    fun insertDatawt(workingTime: WorkingTime) {
+    fun insertWorkingTime(workingTime: WorkingTime) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositorywt.insert(workingTime)
+            workingTimeRepository.insert(workingTime)
         }
     }
 
-    fun intilizeDatad() {
+    fun intilizeDoctors() {
 
         _DiplayDocotors.value?.forEach { item ->
-            insertDatad(item)
+            insertDoctor(item)
         }
     }
 
-    fun intilizeDatal() {
+    fun initializeLocationOfDoctors() {
 
         locationitems.value?.forEach { item ->
-            insertDatal(item)
+            insertLocation(item)
         }
     }
 
-    fun intilizeDatawt() {
+    fun initializeWorkingTime() {
 
         wtitems.value?.forEach { item ->
-            insertDatawt(item)
+            insertWorkingTime(item)
         }
     }
 
     fun updateData(doctor: Doctor) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryd.update(doctor)
+            doctorRepository.update(doctor)
         }
     }
 
 
     fun deleteItem() {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryd.clear()
+            doctorRepository.clear()
         }
     }
 
     fun searchDatabase(searchQuery: String): LiveData<List<Doctor>> {
-        return repositoryd.searchDatabase(searchQuery)
+        return doctorRepository.searchDatabase(searchQuery)
     }
 
 

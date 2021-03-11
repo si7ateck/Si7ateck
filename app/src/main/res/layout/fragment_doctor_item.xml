@@ -18,162 +18,160 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <com.google.android.material.card.MaterialCardView
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/base_cardview"
-            android:layout_width="match_parent"
+        android:id="@+id/card_container"
+        android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
             android:checkable="true"
             android:clickable="true"
             android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.473"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.021">
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/base_cardview"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.511"
-                tools:layout_editor_absoluteX="-55dp">
+
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/fixed_layout"
+                    android:id="@+id/scale_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0">
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <FrameLayout
-                        android:id="@+id/frameLayout"
+
+                    <!-- Media -->
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/doctor_image"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_height="194dp"
+                        android:background="#3EDDDDDD"
+                        android:getImageFromUri="@{doctor._image}"
+                        android:scaleType="centerCrop"
+                        tools:src="@drawable/images"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-                        <!-- Media -->
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/doctor_image"
-                            android:layout_width="match_parent"
-                            android:layout_height="194dp"
-                            android:scaleType="centerCrop"
-                            android:getImageFromUri="@{doctor._image}" />
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:background="#AA000000"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctor_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
 
-
-                        <LinearLayout
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/doctor_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|bottom"
-                            android:background="#AA000000"
-                            android:orientation="vertical">
+                            android:padding="4dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="@{doctor._name}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="@color/white"
+                            tools:text="Akram Bensalem"
+                            android:textSize="18sp"/>
 
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/doctor_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:text="@{doctor._name}"
-                                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                                android:textColor="#ffffffff" />
+                        <LinearLayout
+                            android:id="@+id/rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/toprate">
 
-                            <LinearLayout
-                                android:id="@+id/rate"
+                            <View
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_star_24dp" />
+
+                            <View
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_star_24dp" />
+
+                            <View
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_star_24dp" />
+
+                            <View
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_star_24dp" />
+
+                            <View
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_star_half_24dp" />
+
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/toprate">
+                                android:layout_marginStart="8dp"
+                                android:text="4.5"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/yellowStar"
+                                android:textSize="12sp"
+                                 />
 
-                                <View
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:background="@drawable/ic_star_24dp" />
-
-                                <View
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:background="@drawable/ic_star_24dp" />
-
-                                <View
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:background="@drawable/ic_star_24dp" />
-
-                                <View
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:background="@drawable/ic_star_24dp" />
-
-                                <View
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:background="@drawable/ic_star_half_24dp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:text="4.5"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="@color/secondaryTextColor"
-                                    android:textSize="12sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="(873)"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="12sp" />
-
-
-                            </LinearLayout>
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/doctor_addess"
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:setTextBinding="@{viewmodeld.getAddress(doctor._id_firebase)}"
-                                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                                android:textColor="#ffffffff" />
+                                android:layout_marginStart="4dp"
+                                android:text="(873)"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="#ffffffff"
+                                android:textSize="12sp" />
+
 
                         </LinearLayout>
 
-                    </FrameLayout>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/doctor_addess"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:layout_marginLeft="8dp"
+                            android:setTextBinding="@{viewmodeld.getAddress(doctor._id_firebase)}"
+                            android:textColor="@color/white"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            tools:text="Algeria, Medea, Ain Bensultan"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <LinearLayout
-                    android:id="@+id/expandableLayout"
+                    android:id="@+id/expand_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
+                    android:background="#23F1F0F0"
                     android:settime="@{viewmodeld.getWT(doctor._id_firebase)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fixed_layout">
+                    app:layout_constraintTop_toBottomOf="@+id/scale_container">
 
 
                     <TextView
@@ -276,7 +274,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
 

@@ -37,17 +37,9 @@
         android:id="@+id/doctor_item"
         android:name="com.si7ateck.dz.ui.doctor.DoctorItemFragment"
         android:label="DoctorItem"
-        >
-        <action
-            android:id="@+id/action_doctor_item_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
+        />
     <fragment
         android:id="@+id/pharmacyFragment"
         android:name="com.si7ateck.dz.ui.pharmacy.PharmacyFragment"
-        android:label="PharmacyFragment" >
-        <action
-            android:id="@+id/action_pharmacyFragment_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
+        android:label="PharmacyFragment" />
 </navigation>

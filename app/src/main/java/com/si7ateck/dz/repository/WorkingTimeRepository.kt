@@ -14,4 +14,8 @@ class WorkingTimeRepository(private val wtDatabaseDao: WTDatabaseDao) {
         wtDatabaseDao.clear()
     }
 
+    suspend fun delete(workingTime: WorkingTime){
+        wtDatabaseDao.delete(workingTime)
+    }
+
 }
