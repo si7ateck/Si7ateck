@@ -25,6 +25,25 @@
         tools:context=".ui.doctor.DoctorItemFragment"
         tools:listitem="@layout/fragment_doctor_item" />
 
+
+        <com.si7ateck.dz.utility.filter.FiltersLayout
+            android:id="@+id/filters_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+
+            app:layout_behavior=".utility.ScrollingFABBehavior"
+
+            />
+
+        <com.si7ateck.dz.utility.filter.FiltersMotionLayout
+            android:id="@+id/filters_motion_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layoutDescription="@xml/scene_filter" />
+
+<!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabButton"
         android:layout_width="wrap_content"
@@ -35,6 +54,8 @@
         android:src="@drawable/ic_baseline_filter_list_24"
         app:layout_behavior=".utility.ScrollingFABBehavior"
         app:maxImageSize="34dp" />
+
+        -->
     </com.si7ateck.dz.utility.NestedCoordinatorLayout>
 
 </layout>

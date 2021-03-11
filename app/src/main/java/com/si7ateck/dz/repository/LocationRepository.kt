@@ -17,4 +17,9 @@ class LocationRepository(private val locationDatabaseDao: LocationDatabaseDao) {
         locationDatabaseDao.clear()
     }
 
+
+    suspend fun delete(location: Location){
+        locationDatabaseDao.delete(location)
+    }
+
 }

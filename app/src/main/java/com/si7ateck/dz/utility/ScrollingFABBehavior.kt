@@ -1,50 +1,87 @@
 package com.si7ateck.dz.utility
 
-import android.R
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.si7ateck.dz.utility.filter.FiltersLayout
 
 
-class ScrollingFABBehavior(context: Context, attrs: AttributeSet): FloatingActionButton.Behavior(context, attrs)  {
+class ScrollingFABBehavior(context: Context, attrs: AttributeSet):
+    CoordinatorLayout.Behavior<FiltersLayout>(context, attrs) {
 
 
     override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout,
-                                     child: FloatingActionButton, directTargetChild: View, target: View,
+                                     child: FiltersLayout, directTargetChild: View, target: View,
                                      axes: Int, type: Int): Boolean {
         return axes == ViewCompat.SCROLL_AXIS_VERTICAL || super.onStartNestedScroll(coordinatorLayout,
             child, directTargetChild, target, axes, type)
     }
 
 
-    override fun onStopNestedScroll(
+    override fun onNestedScroll(
         coordinatorLayout: CoordinatorLayout,
-        child: FloatingActionButton,
+        child: FiltersLayout,
         target: View,
-        type: Int
+        dxConsumed: Int,
+        dyConsumed: Int,
+        dxUnconsumed: Int,
+        dyUnconsumed: Int,
+        type: Int,
+        consumed: IntArray
     ) {
-        super.onStopNestedScroll(coordinatorLayout, child, target, type)
-    }
+        super.onNestedScroll(
+            coordinatorLayout,
+            child,
+            target,
+            dxConsumed,
+            dyConsumed,
+            dxUnconsumed,
+            dyUnconsumed,
+            type,
+            consumed
+        )
 
-    override fun onNestedScroll(coordinatorLayout: CoordinatorLayout,
-                                child: FloatingActionButton, target: View, dxConsumed: Int, dyConsumed: Int,
-                                dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed,
-            dyUnconsumed, type)
 
         if (dyConsumed > 0 && child.visibility == View.VISIBLE) {
-            child.hide(object : FloatingActionButton.OnVisibilityChangedListener() {
-                override fun onHidden(fab: FloatingActionButton) {
-                    super.onHidden(fab)
-                    fab.visibility = View.INVISIBLE
-                }
-            })
+
+
+            Log.d("akramTest", "hide")
+
+// Start the animation
+
+            child.animate()
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        super.onAnimationEnd(animation)
+                        child.translationY = 0.0f
+                        child.visibility = View.INVISIBLE
+                    }
+                })
+                .start()
+
+
         } else if (dyConsumed < 0 && child.visibility != View.VISIBLE) {
-            child.show()
+
+            Log.d("akramTest", "show")
+            // Start the animation
+
+            child.animate()
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        super.onAnimationEnd(animation)
+                        child.translationY = 1.0f
+                        child.visibility = View.VISIBLE
+                    }
+                }).start()
+
         }
+
+
     }
 
 

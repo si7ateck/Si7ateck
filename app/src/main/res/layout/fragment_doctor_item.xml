@@ -19,8 +19,9 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-            android:id="@+id/base_cardview"
-            android:layout_width="match_parent"
+
+        android:id="@+id/card_container"
+        android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:cardCornerRadius="8dp"
@@ -32,10 +33,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/fixed_layout"
+                    android:id="@+id/scale_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +161,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/expandableLayout"
+                    android:id="@+id/expand_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -169,7 +171,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fixed_layout">
+                    app:layout_constraintTop_toBottomOf="@+id/scale_container">
 
 
                     <TextView

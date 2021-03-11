@@ -20,6 +20,11 @@ class DoctorRepository(private val doctorDatabaseDao: DoctorDatabaseDao) {
         doctorDatabaseDao.clear()
     }
 
+    suspend fun delete(doctor: Doctor) {
+        doctorDatabaseDao.delete(doctor)
+    }
+
+
     fun searchDatabase(searchQuery: String): LiveData<List<Doctor>> {
         return doctorDatabaseDao.searchDatabase(searchQuery)
     }

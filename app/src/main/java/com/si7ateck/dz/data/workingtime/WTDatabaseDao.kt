@@ -10,6 +10,9 @@ interface WTDatabaseDao {
     @Update
     suspend fun update(workingTime: WorkingTime)
 
+    @Delete
+    suspend fun delete(workingTime: WorkingTime)
+
     @Query("DELETE FROM _working_time_table")
     suspend fun clear()
 }
