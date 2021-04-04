@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732298122707",
+    "project_id": "si7ateck",
+    "storage_bucket": "si7ateck.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732298122707:android:bbbf5beedcc39ceb2dcb26",
+        "android_client_info": {
+          "package_name": "com.si7ateck.dz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732298122707-6d1k9j2o0cprvegafs6qjd4fp55qfje8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH-JdVyvP5TQ2aJaOjr_j4JaE7MJtfHv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732298122707-6d1k9j2o0cprvegafs6qjd4fp55qfje8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
