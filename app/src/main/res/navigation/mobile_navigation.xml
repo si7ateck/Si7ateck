@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_nav_home_to_pharmacyFragment"
             app:destination="@id/pharmacyFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_loginRegisterFragment"
+            app:destination="@id/loginRegisterFragment" />
     </fragment>
 
     <fragment
@@ -42,4 +45,37 @@
         android:id="@+id/pharmacyFragment"
         android:name="com.si7ateck.dz.ui.pharmacy.PharmacyFragment"
         android:label="PharmacyFragment" />
+    <fragment
+        android:id="@+id/loggedinFragment"
+        android:name="com.si7ateck.dz.LoggedinFragment"
+        android:label="LoggedinFragment" >
+        <action
+            android:id="@+id/action_loggedinFragment_to_loginRegisterFragment"
+            app:destination="@id/loginRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginRegisterFragment"
+        android:name="com.si7ateck.dz.LoginRegisterFragment"
+        android:label="LoginRegisterFragment" >
+        <action
+            android:id="@+id/action_loginRegisterFragment_to_loggedinFragment"
+            app:destination="@id/loggedinFragment" />
+        <action
+            android:id="@+id/action_loginRegisterFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_loginRegisterFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.si7ateck.dz.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginRegisterFragment"
+            app:destination="@id/loginRegisterFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loggedinFragment"
+            app:destination="@id/loggedinFragment" />
+    </fragment>
 </navigation>

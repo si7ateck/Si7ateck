@@ -8,13 +8,13 @@ import androidx.lifecycle.viewModelScope
 import com.si7ateck.dz.MyDataBase
 import com.si7ateck.dz.data.doctor.Doctor
 import com.si7ateck.dz.data.gps.Location
-import com.si7ateck.dz.ui.types.City
-import com.si7ateck.dz.ui.types.Specialty
-import com.si7ateck.dz.ui.types.Type
 import com.si7ateck.dz.data.workingtime.WorkingTime
 import com.si7ateck.dz.repository.DoctorRepository
 import com.si7ateck.dz.repository.LocationRepository
 import com.si7ateck.dz.repository.WorkingTimeRepository
+import com.si7ateck.dz.ui.types.City
+import com.si7ateck.dz.ui.types.Specialty
+import com.si7ateck.dz.ui.types.Type
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
@@ -45,7 +45,7 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
     val getAllDoctors: LiveData<List<Doctor>> = doctorRepository.getAllDoctors
 
 
-    fun deleteTest(doctor: Doctor, location: Location, workingTime: WorkingTime){
+    fun deleteTest(doctor: Doctor, location: Location, workingTime: WorkingTime) {
 
         viewModelScope.launch(Dispatchers.IO) {
             MyDataBase.getDatabase(myApplication).runInTransaction {
@@ -60,13 +60,28 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
 
     }
 
+    fun insertdataDoctor() {
 
-    fun getAddress(id:String):LiveData<String> {
+        viewModelScope.launch(Dispatchers.IO) {
+            MyDataBase.getDatabase(myApplication).runInTransaction {
+                viewModelScope.launch(Dispatchers.IO) {
+                    initializeLocationOfDoctors()
+                    initializeWorkingTime()
+                    intilizeDoctors()
+                }
+            }
+
+        }
+
+    }
+
+
+    fun getAddress(id: String): LiveData<String> {
         return doctorRepository.getAddress(id)
     }
 
 
-    fun getWT(id: String):LiveData<String>{
+    fun getWT(id: String): LiveData<String> {
         return doctorRepository.getWT(id)
     }
 
@@ -312,7 +327,6 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
     fun searchDatabase(searchQuery: String): LiveData<List<Doctor>> {
         return doctorRepository.searchDatabase(searchQuery)
     }
-
 
 
 }

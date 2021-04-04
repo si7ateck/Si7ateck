@@ -34,4 +34,6 @@
     <dimen name="bottom_bar_icon_padding">24dp</dimen>
     <dimen name="bottom_bar_height">@dimen/fab_size</dimen>
 
+    <dimen name="logo_w_h">80dp</dimen>
+
 </resources>

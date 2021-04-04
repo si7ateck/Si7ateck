@@ -12,22 +12,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.si7ateck.dz.R
-import com.si7ateck.dz.data.doctor.Doctor
-import com.si7ateck.dz.data.gps.Location
-import com.si7ateck.dz.data.workingtime.WorkingTime
 import com.si7ateck.dz.databinding.FragmentItemListBinding
 import com.si7ateck.dz.ui.doctor.adapter.Adapter
-import com.si7ateck.dz.ui.types.City
-import com.si7ateck.dz.ui.types.Specialty
-import com.si7ateck.dz.ui.types.Type
 import com.si7ateck.dz.utility.filter.FiltersLayout
 import com.si7ateck.dz.utility.filter.FiltersMotionLayout
-import com.si7ateck.dz.utility.helper.utils.bindView
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-import kotlinx.android.synthetic.main.fragment_item_list.*
 
 
-class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandListener {
+class DoctorItemFragment : Fragment(), SearchView.OnQueryTextListener, ExpandListener {
 
     var animationPlaybackSpeed: Double = 0.8
 
@@ -39,8 +31,8 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
 
     private var _binding: FragmentItemListBinding? = null
     private val binding get() = _binding!!
-    private lateinit var  adapter: Adapter
-    private lateinit var linearLayoutManager : LinearLayoutManager
+    private lateinit var adapter: Adapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
 
 
     private lateinit var filtersLayout: FiltersLayout
@@ -79,7 +71,7 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
 
 
 
-        adapter = Adapter(requireContext(),this)
+        adapter = Adapter(requireContext(), this)
 
 
         setHasOptionsMenu(true)
@@ -93,22 +85,16 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
 
 
 
+        mDoctorItemViewModel.getAllDoctors.observe(viewLifecycleOwner, Observer { data ->
 
+            adapter.setData(data, mDoctorItemViewModel)
+            isAdapterFiltered = true
+        })
 
-
-
-        mDoctorItemViewModel.getAllDoctors.observe(viewLifecycleOwner, Observer {data ->
-
-               adapter.setData(data,mDoctorItemViewModel)
-              isAdapterFiltered = true
-           })
-
-
-
+       mDoctorItemViewModel.insertdataDoctor()
 
 /*
-
-        mDoctorItemViewModel.deleteTest(
+      mDoctorItemViewModel.deleteTest(
             Doctor(
             20,
             "1",
@@ -140,9 +126,8 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
         )
 */
 
-         return binding.root
+        return binding.root
     }
-
 
 
     /**
@@ -199,7 +184,8 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
             searchThroughDatabase(query)
             isAdapterFiltered = true
         }
-        return true    }
+        return true
+    }
 
     override fun onQueryTextChange(query: String?): Boolean {
         if (query != null) {
@@ -209,19 +195,19 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
     }
 
 
-
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
-        Log.d("akram",searchQuery)
+        Log.d("akram", searchQuery)
         mDoctorItemViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner,
-            Observer { list -> list?.let {
-                adapter.setData(list, mDoctorItemViewModel)
-            }
-        })
+            Observer { list ->
+                list?.let {
+                    adapter.setData(list, mDoctorItemViewModel)
+                }
+            })
     }
 
-    override fun onExpand(position: Int, size : Int) {
-         if ( position == 0 || position == size - 1  ) {
+    override fun onExpand(position: Int, size: Int) {
+        if (position == 0 || position == size - 1) {
             linearLayoutManager.stackFromEnd = position != 0
         }
 
@@ -234,7 +220,7 @@ class DoctorItemFragment: Fragment(), SearchView.OnQueryTextListener, ExpandList
 }
 
 interface ExpandListener {
-    fun onExpand(position: Int, size : Int)
+    fun onExpand(position: Int, size: Int)
 }
 
 

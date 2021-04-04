@@ -21,8 +21,36 @@
     <string name="keep_me_sign_in">Keep me sign in</string>
     <string name="account_managing">Account managing</string>
 
-
-
+    <string name="action_sign_in_short" translatable="false">Register</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="minimum_password" translatable="false">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed" translatable="false">Authentication failed, check your email and password or sign up</string>
+    <string name="change_email" translatable="false">Change Email</string>
+    <string name="change_password" translatable="false">Change Password</string>
+    <string name="send_password_reset_email" translatable="false">Send Password reset email</string>
+    <string name="remove_user" translatable="false">Remove user</string>
+    <string name="new_pass" translatable="false">New Password</string>
+    <string name="title_activity_profile" translatable="false">Firebase</string>
+    <string name="title_activity_login" translatable="false">Sign in</string>
+    <string name="hint_email" translatable="false">Email</string>
+    <string name="hint_password" translatable="false">Password</string>
+    <string name="hint_name" translatable="false">Fullname</string>
+    <string name="btn_login" translatable="false">LOGIN</string>
+    <string name="prompt_password" translatable="false">Please enter your password</string>
+    <string name="btn_link_to_register" translatable="false">Not a member? Get registered in Firebase now!</string>
+    <string name="btn_link_to_login" translatable="false">Already registered. Login Me!</string>
+    <string name="title_activity_reset_password" translatable="false">ResetPasswordActivity</string>
+    <string name="btn_forgot_password" translatable="false">Forgot your password?</string>
+    <string name="btn_reset_password" translatable="false">Reset Password</string>
+    <string name="btn_back" translatable="false"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email" translatable="false">New Email</string>
+    <string name="btn_change" translatable="false">Change</string>
+    <string name="btn_send" translatable="false">Send</string>
+    <string name="btn_remove" translatable="false">Remove</string>
+    <string name="btn_sign_out" translatable="false">Sign Out</string>
+    <string name="lbl_forgot_password" translatable="false">Forgot password?</string>
+    <string name="forgot_password_msg" translatable="false">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="email_id" translatable="false">Email ID</string>
 
 
     <!-- Preference Titles -->
@@ -65,4 +93,5 @@
     <string name="attachment_summary_off">Téléchargez automatiquement les mises à jour lorsque vous etes connecté à un réseau Wi-Fi ou bien les réseaux mobiles</string>
     <string name="pr_prenom">Prénom</string>
     <string name="nom">Nom</string>
+
 </resources>
