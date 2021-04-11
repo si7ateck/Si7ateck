@@ -90,7 +90,7 @@ class DoctorItemFragment : Fragment(), SearchView.OnQueryTextListener, ExpandLis
             isAdapterFiltered = true
         })
 
-//        mDoctorItemViewModel.insertdataDoctor()
+        mDoctorItemViewModel.insertdataDoctor()
 
         return binding.root
     }
