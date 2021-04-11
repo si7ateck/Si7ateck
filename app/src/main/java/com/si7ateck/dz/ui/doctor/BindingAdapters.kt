@@ -57,16 +57,29 @@ class BindingAdapters {
         @BindingAdapter("android:getImageFromUri")
         @JvmStatic
         fun getImageFromUri(view: ShapeableImageView, imageUri: String) {
-            if (imageUri.equals("R.drawable.images")){
+            if (imageUri.equals("R.drawable.doctor1")){
                 Glide.with(view.context)
-                    .load(R.drawable.images)
+                    .load(R.drawable.doctor1)
                     .into(view)
-            } else if (imageUri.equals("R.drawable.ppng")){
+            } else if (imageUri.equals("R.drawable.doctor2")){
 
                 Glide.with(view.context)
-                    .load(R.drawable.ppng)
+                    .load(R.drawable.doctor2)
                     .into(view)
-            }else Glide.with(view.context)
+            }
+            else if (imageUri.equals("R.drawable.doctor3")){
+
+                Glide.with(view.context)
+                    .load(R.drawable.doctor3)
+                    .into(view)
+            }
+            else if (imageUri.equals("R.drawable.doctor4")){
+
+                Glide.with(view.context)
+                    .load(R.drawable.doctor4)
+                    .into(view)
+            }
+            else Glide.with(view.context)
                 .load(imageUri)
                 .into(view)
 
@@ -90,8 +103,7 @@ class BindingAdapters {
         @BindingAdapter("android:settime")
         @JvmStatic
         fun settime(view: LinearLayout, time: LiveData<String>) {
-            val child1 = view.findViewById<TextView>(R.id.child1)
-            val child2 = view.findViewById<TextView>(R.id.child2)
+/*
             val parent = view.findViewById<TextView>(R.id.oc)
 
 
@@ -99,36 +111,53 @@ class BindingAdapters {
             val currentDay = SimpleDateFormat("EEEE" ).format(Date())
             val currentTime = SimpleDateFormat("HH:mm").format(Date())
 
+            var day_to_number = 0
+
+            if (currentDay.toLowerCase().equals("monday")){
+                day_to_number = 1
+            } else if (currentDay.toLowerCase().equals("tuesday")){
+                day_to_number = 2
+            }else if (currentDay.toLowerCase().equals("wednesday")){
+                day_to_number = 3
+            }else if (currentDay.toLowerCase().equals("thursday")){
+                day_to_number = 4
+            }else if (currentDay.toLowerCase().equals("friday")){
+                day_to_number = 5
+            }else if (currentDay.toLowerCase().equals("saturday")){
+                day_to_number = 6
+            }
 
 
-            time.observe(view.lifecycleOwner!!, Observer { it ->
+
+        time.observe(view.lifecycleOwner!!, Observer { it ->
                  val timeaff = it.split("\$?\$")
 
-                if (timeaff[5].contains(" - ")){
-                    val HandM = timeaff[4].split(" \\- ")
+                if (timeaff[day_to_number].contains(" - ")){
+                    val HandM = timeaff[day_to_number].split(" \\- ")
                     Log.d("timeTest", "index of ${HandM.size}")
-
-                    if (currentDay.decapitalize().equals("thursday")) {
 
                         if (ContextUtils.isTimeBetweenTwoTime(HandM[0],HandM[1],currentTime)){
 
-                            parent.text = "Open"
+                            parent.text = "Opened"
+                            parent.setTextColor(view.resources.getColor(R.color.primaryColor))
                             Log.d("timeTest", "${currentTime} is include in ${HandM[0]} - ${HandM[1]}}")
                         }else{
-                            parent.text = "Close"
+                            parent.text = "Closed"
+                            parent.setTextColor(view.resources.getColor(R.color.yellowStar))
+
                             Log.d("timeTest", "${currentTime} is not include")}
 
-                    } else Log.d("timeTest", "today is not thursday")
+
 
                 } else {
-                    parent.text = "Close"
-                    Log.d("timeTest", "timeaff[5] is ${timeaff[5]} and doesn't contain ' - ' ")}
+                    parent.text = "Closed"
+                    parent.setTextColor(view.resources.getColor(R.color.yellowStar))
+                    Log.d("timeTest", "timeaff[5] is ${timeaff[5]} and doesn't contain ' - ' ")
+                }
 
 
-                child1.text = timeaff[0]
-                child2.text = timeaff[1]
-                child2.setTextColor(view.resources.getColor(R.color.primaryColor))
             })
+*/
         }
     }
 }

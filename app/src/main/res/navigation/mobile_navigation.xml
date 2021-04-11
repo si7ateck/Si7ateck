@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.si7ateck.dz.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/home_title"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_doctor_item"
@@ -22,33 +22,22 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.si7ateck.dz.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.si7ateck.dz.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.si7ateck.dz.ui.setting.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/doctor_item"
         android:name="com.si7ateck.dz.ui.doctor.DoctorItemFragment"
-        android:label="DoctorItem"
+        android:label="Doctors"
         />
     <fragment
         android:id="@+id/pharmacyFragment"
         android:name="com.si7ateck.dz.ui.pharmacy.PharmacyFragment"
-        android:label="PharmacyFragment" />
+        android:label="Pharmacy" />
     <fragment
         android:id="@+id/loggedinFragment"
         android:name="com.si7ateck.dz.LoggedinFragment"
-        android:label="LoggedinFragment" >
+        android:label="Log In" >
         <action
             android:id="@+id/action_loggedinFragment_to_loginRegisterFragment"
             app:destination="@id/loginRegisterFragment" />
@@ -56,7 +45,7 @@
     <fragment
         android:id="@+id/loginRegisterFragment"
         android:name="com.si7ateck.dz.LoginRegisterFragment"
-        android:label="LoginRegisterFragment" >
+        android:label="Sign Up" >
         <action
             android:id="@+id/action_loginRegisterFragment_to_loggedinFragment"
             app:destination="@id/loggedinFragment" />
@@ -70,7 +59,7 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.si7ateck.dz.RegisterFragment"
-        android:label="RegisterFragment" >
+        android:label="Sign Up" >
         <action
             android:id="@+id/action_registerFragment_to_loginRegisterFragment"
             app:destination="@id/loginRegisterFragment" />

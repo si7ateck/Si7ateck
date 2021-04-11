@@ -89,56 +89,45 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         value = ArrayList<Doctor>()
         value!!.add(
             Doctor(
-                6,
+                1,
                 "1",
-                "Doctor1",
-                Specialty.Chirurgien_Cardiaque,
+                "Akram Bensalem",
+                Specialty.Urologue,
                 "0540073829",
-                "R.drawable.images",
+                "R.drawable.doctor1",
                 Type.PRIVATE
             )
         )
         value!!.add(
             Doctor(
-                7,
+                2,
                 "2",
-                "Doctor2",
-                Specialty.Chirurgie_pediatrique,
+                "Belmiloud Ilies",
+                Specialty.Radiologue,
                 "0540073829",
-                "R.drawable.ppng",
-                Type.PRIVATE
+                "R.drawable.doctor2",
+                Type.PUBLIC
             )
         )
         value!!.add(
             Doctor(
-                8,
+                3,
                 "3",
-                "Doctor3",
+                "Arbaoui Slimane",
                 Specialty.Allergologue,
                 "0540073829",
-                "R.drawable.ppng",
-                Type.PRIVATE
+                "R.drawable.doctor3",
+                Type.PUBLIC
             )
         )
         value!!.add(
             Doctor(
-                9,
+                4,
                 "4",
-                "Doctor4",
-                Specialty.Allergologue,
+                "Hamadou Bourhan",
+                Specialty.Orthopediste,
                 "0540073829",
-                "R.drawable.images",
-                Type.PRIVATE
-            )
-        )
-        value!!.add(
-            Doctor(
-                10,
-                "5",
-                "Doctor5",
-                Specialty.Allergologue,
-                "0540073829",
-                "R.drawable.images",
+                "R.drawable.doctor4",
                 Type.PRIVATE
             )
         )
@@ -154,8 +143,8 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
                 2.22,
                 0.5,
                 City.TIPAZA,
-                "tipaza",
-                "1 rue",
+                "Tipaza",
+                "Ain Bensultan",
                 233
             )
         )
@@ -165,8 +154,8 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
                 2.223,
                 0.05,
                 City.MEDEA,
-                "dar el berd",
-                "2 rue belquace",
+                "Ain D'hab",
+                "Ain D'hab",
                 2334
             )
         )
@@ -176,8 +165,8 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
                 2.225,
                 0.45,
                 City.TIZI_OUZOU,
-                "dar el berd",
-                "2 rue belquace",
+                "Ain D'hab",
+                "2 Rue Horiya",
                 2335
             )
         )
@@ -187,20 +176,9 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
                 2.227,
                 0.35,
                 City.ORAN,
-                "dar el berd",
-                "2 rue belquace",
+                "Ain Abtal",
+                "5 Rue El Nasr",
                 2337
-            )
-        )
-        value!!.add(
-            Location(
-                "5",
-                2.228,
-                0.75,
-                City.BLIDA,
-                "dar el berd",
-                "2 rue belquace",
-                2339
             )
         )
     }
@@ -247,18 +225,6 @@ class DoctorItemViewModel(application: Application) : AndroidViewModel(applicati
         value!!.add(
             WorkingTime(
                 "4",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "not workin",
-                "not workin"
-            )
-        )
-        value!!.add(
-            WorkingTime(
-                "5",
                 "08:00 - 17:00",
                 "08:00 - 17:00",
                 "08:00 - 17:00",

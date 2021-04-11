@@ -5,10 +5,12 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.ImageView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.doOnLayout
@@ -17,6 +19,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.si7ateck.dz.R
 import com.si7ateck.dz.data.doctor.Doctor
 import com.si7ateck.dz.databinding.FragmentDoctorItemBinding
@@ -280,8 +283,7 @@ class Adapter(context: Context, var expandListener : ExpandListener): RecyclerVi
                 it.expand()
             }
         }
-
-        holder.binding.scaleContainer.setOnClickListener { view ->
+        holder.binding.cardContainer.setOnClickListener { view ->
 
 
 
@@ -320,48 +322,28 @@ class Adapter(context: Context, var expandListener : ExpandListener): RecyclerVi
             }
 
         }
-        holder.binding.executePendingBindings()
-    }
 
 
-/*
+        holder.binding.heartButton.setOnClickListener {
 
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val model = dataList[position]
-        holder.binding.doctor = model
-        holder.binding.viewmodeld = viewModel
-
-        expandItem(holder, model == expandedModel, animate = false)
-        scaleDownItem(holder, position, isScaledDown)
-
-        holder.cardContainer.setOnClickListener {
-            if (expandedModel == null) {
-
-                // expand clicked view
-                expandItem(holder, expand = true, animate = true)
-                expandedModel = model
-            } else if (expandedModel == model) {
-
-                // collapse clicked view
-                expandItem(holder, expand = false, animate = true)
-                expandedModel = null
+            if (it.tag.equals("heart_button")) {
+                Glide.with(it.context)
+                    .load(R.drawable.ic_heart_filled)
+                    .into(it as ImageView)
+                it.tag= "heart_filled_button"
             } else {
-
-                // collapse previously expanded view
-                val expandedModelPosition = dataList.indexOf(expandedModel!!)
-                val oldViewHolder =
-                    recyclerView.findViewHolderForAdapterPosition(expandedModelPosition) as? MyViewHolder
-                if (oldViewHolder != null) expandItem(oldViewHolder, expand = false, animate = true)
-
-                // expand clicked view
-                expandItem(holder, expand = true, animate = true)
-                expandedModel = model
+                Glide.with(it.context)
+                    .load(R.drawable.ic_heart)
+                    .into(it as ImageView)
+                it.tag= "heart_button"
             }
         }
+        holder.binding.executePendingBindings()
+
+
     }
 
-*/
+
 
     fun setData(doctorlist: List<Doctor>,viewModel: DoctorItemViewModel){
         val doctorDiffUtil = DiffUtill(dataList, doctorlist)

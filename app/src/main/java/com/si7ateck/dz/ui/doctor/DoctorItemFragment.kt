@@ -70,20 +70,19 @@ class DoctorItemFragment : Fragment(), SearchView.OnQueryTextListener, ExpandLis
 
 
 
-
         adapter = Adapter(requireContext(), this)
 
 
         setHasOptionsMenu(true)
 
 
-        setupRecyclerview()
 
         // Init FilterLayout
         useFiltersMotionLayout(false)
         updateRecyclerViewAnimDuration()
 
 
+        setupRecyclerview()
 
         mDoctorItemViewModel.getAllDoctors.observe(viewLifecycleOwner, Observer { data ->
 
@@ -91,40 +90,7 @@ class DoctorItemFragment : Fragment(), SearchView.OnQueryTextListener, ExpandLis
             isAdapterFiltered = true
         })
 
-       mDoctorItemViewModel.insertdataDoctor()
-
-/*
-      mDoctorItemViewModel.deleteTest(
-            Doctor(
-            20,
-            "1",
-            "Doctor20",
-            Specialty.Chirurgien_Cardiaque,
-            "0540073829",
-            "R.drawable.images",
-            Type.PRIVATE
-        ) ,
-            Location(
-                "20",
-                2.22,
-                0.5,
-                City.TIPAZA,
-                "tipaza",
-                "1 rue",
-                233
-            ),
-            WorkingTime(
-                "20",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "08:00 - 17:00",
-                "not workin",
-                "not workin"
-            )
-        )
-*/
+//        mDoctorItemViewModel.insertdataDoctor()
 
         return binding.root
     }

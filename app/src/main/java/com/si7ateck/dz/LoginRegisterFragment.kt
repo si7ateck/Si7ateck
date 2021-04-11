@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseUser
 
 
@@ -37,12 +39,12 @@ class LoginRegisterFragment : Fragment() {
         var passwd = ""
 
         val loginButton = view.findViewById<Button>(R.id.fragment_loginregister_login)
-        val registerButton = view.findViewById<Button>(R.id.fragment_loginregister_register)
+        val registerButton = view.findViewById<TextView>(R.id.fragment_loginregister_register)
 
         loginButton.setOnClickListener {
-            email = view.findViewById<EditText>(R.id.fragment_loginregister_email).text.toString()
+            email = view.findViewById<EditText>(R.id.full_name).text.toString()
             passwd =
-                view.findViewById<EditText>(R.id.fragment_loginregister_password).text.toString()
+                view.findViewById<EditText>(R.id.password).text.toString()
             if (email.isNotEmpty() && passwd.isNotEmpty()) {
                 viewModel.login(email, passwd)
             } else {

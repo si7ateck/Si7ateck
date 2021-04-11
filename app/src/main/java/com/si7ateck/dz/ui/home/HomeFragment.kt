@@ -50,17 +50,6 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_nav_home_to_pharmacyFragment)
             }
             slider.getItems()
-            slider.onPageListener(
-                onPageScroll = { i: Int, fl: Float, i1: Int ->
-                    Log.d("unique", "onPageScroll")
-                },
-                onPageSelected = { position ->
-                    Log.d("unique", "onPageSelected")
-                },
-                onPageStateChange = { state ->
-                    Log.d("unique", "onPageStateChange")
-
-                })
             slider.getIndicator()
         }
         homeViewModel.items.observe(viewLifecycleOwner, Observer { items ->

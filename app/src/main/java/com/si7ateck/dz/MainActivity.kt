@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -81,7 +81,12 @@ super.attachBaseContext(localeUpdatedContext)
     fun GoToSignIn(v: View) {
         findNavController(R.id.nav_host_fragment)
             .navigate(R.id.action_nav_home_to_loginRegisterFragment)
-        Log.d("tagtag","yesyes")
+    }
+
+
+    fun GoToSignUp(v: View) {
+        findNavController(R.id.nav_host_fragment)
+            .navigate(R.id.action_nav_home_to_loginRegisterFragment)
     }
 
 }
